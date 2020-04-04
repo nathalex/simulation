@@ -1,0 +1,302 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.008983567593941756 0.9348372163570828 0.35496291979166755 3.1526057897717394
+  position -0.08231135180432636 4.777188596194855 -4.995933125242997
+}
+
+TexturedBackground {
+  texture "empty_office"
+}
+
+DEF TANK RectangleArena {
+  floorSize 5 2
+  floorAppearance OldSteel {
+  }
+  wallHeight 2
+  wallAppearance PBRAppearance {
+    transparency 0.95
+    emissiveColor 0.8 0.8 0.8
+  }
+}
+DEF STILL_WATER Fluid {
+  translation 0 0.9 0
+  children [
+    DEF S Shape {
+      appearance DEF WATER_APPEARANCE PBRAppearance {
+        baseColor 0 0.501961 1
+        transparency 0.8
+        roughness 1.1102230246251565e-16
+        metalness 0
+      }
+      geometry Box {
+        size 5 1.8 2 
+        }
+      }
+    ]
+  }
+  
+  DEF ROV Robot {
+    translation 0 1 0
+    children[
+      DEF bottom Group{
+        children[
+          PipeSection {
+              translation 0.005 -0.08 0.018
+              rotation 0 0 -1 -1.5708
+              name "pipe bottom 1"
+              height 0.035
+              radius 0.015
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+            }
+            TJoint {
+               translation 0.06 -0.071 0.015
+               rotation    1 0 0 2.8798
+               name        "T joint pipe bottom 1"
+               scale       0.45 0.45 0.45
+               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            PipeSection {
+              translation 0.111 -0.08 0.02
+              rotation 0 0 1 1.5708
+              name "pipe bottom 2"
+              height 0.035
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.005 -0.08 0.255
+              rotation 0 0 1 1.5708
+              name "pipe bottom 3"
+              height 0.035
+              radius 0.015
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+            }
+            TJoint {
+               translation 0.055 -0.068 0.2583
+               rotation    1 0 0 -2.8798
+               name        "T joint pipe bottom 2"
+               scale       0.5 0.5 0.5
+               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            PipeSection {
+              translation 0.111 -0.08 0.255
+              rotation 0 0 1 1.5708
+              name "pipe bottom 4"
+              height 0.035
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            LJoint{
+              translation 0.15 -0.08 0.235
+              rotation -0.577 0.577 -0.577 -2.09
+              name        "L joint pipe bottom 1"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            LJoint{
+              translation -0.04 -0.08 0.23
+              rotation 0 -0.707 0.707 3.138
+              name        "L joint pipe bottom 2"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            LJoint{
+              translation -0.04 -0.08 0.04
+              rotation 0.002 0.708 0.706 -3.141
+              name        "L joint pipe bottom 3"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            LJoint{
+              translation 0.15 -0.08 0.04
+              rotation 0.577 -0.577 -0.577 -2.095
+              name        "L joint pipe bottom 4"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+             PipeSection {
+              translation -0.06 -0.08 0.14
+              rotation 0.577 0.577 0.577 2.0944
+              name "pipe bottom 5"
+              height 0.15
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.17 -0.08 0.14
+              rotation 0.577 0.577 0.577 2.0944
+              name "pipe bottom 6"
+              height 0.15
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.053 -0.055 0.135
+              rotation 0 0 -1 -1.571
+              name "pipe bottom 7"
+              height 0.25
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+           ]
+          }
+        DEF midsection Group{
+          children[
+            PipeSection {
+              translation 0.06 0.0869 -0.0266
+              rotation 1 0 0 -0.262
+              name "pipe mid 1"
+              height 0.27
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.055 0.0827 0.2985
+              rotation 1 0 0 -2.88
+              name "pipe mid 2"
+              height 0.27
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.06 0.0769 0.106
+              rotation 0 0 0 0
+              name "pipe mid 3"
+              height 0.3
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.06 0.0769 0.1634
+              rotation 0 0 0 0
+              name "pipe mid 4"
+              height 0.3
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+          ]
+        }
+        DEF top Group{
+        children[
+          PipeSection {
+              translation -0.025 0.238 -0.068
+              rotation 0 0 -1 -1.5708
+              name "pipe top 1"
+              height 0.1045
+              radius 0.015
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+            }
+            TJoint {
+               translation 0.06 0.2284 -0.0652
+               rotation    1 0 0 -0.2617
+               name        "T joint pipe top 1"
+               scale       0.45 0.45 0.45
+               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            PipeSection {
+              translation 0.145 0.238 -0.068
+              rotation 0 0 1 1.5708
+              name "pipe top 2"
+              height 0.1045
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation -0.025 0.238 0.338
+              rotation 0 0 1 1.5708
+              name "pipe top 3"
+              height 0.1045
+              radius 0.015
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+            }
+            TJoint {
+               translation 0.055 0.2284 0.3359
+               rotation    1 0 0 0.2618
+               name        "T joint pipe top 2"
+               scale       0.5 0.5 0.5
+               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            PipeSection {
+              translation 0.145 0.238 0.338
+              rotation 0 0 1 1.5708
+              name "pipe bottom 4"
+              height 0.1045
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            LJoint{
+              translation -0.1 0.238 0.315
+              rotation 0 -0.707 0.707 3.138
+              name        "L joint pipe top 1"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            LJoint{
+              translation 0.22 0.238 0.3148
+              rotation -0.577 0.577 -0.577 -2.09
+              name        "L joint pipe top 2"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            LJoint{
+              translation -0.1 0.238 -0.045
+              rotation 0.002 0.708 0.706 -3.141
+              name        "L joint pipe top 3"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+            LJoint{
+              translation 0.22 0.238 -0.045
+              rotation 0.577 -0.577 -0.577 -2.095
+              name        "L joint pipe top 4"
+              scale       0.5 0.5 0.5
+              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+            }
+             PipeSection {
+              translation -0.12 0.238 0.14
+              rotation 0.577 0.577 0.577 2.0944
+              name "pipe top 5"
+              height 0.3
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.24 0.238 0.14
+              rotation 0.577 0.577 0.577 2.0944
+              name "pipe top 6"
+              height 0.3
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+            PipeSection {
+              translation 0.058 0.215 0.135
+              rotation 0 0 -1 -1.571
+              name "pipe top 7"
+              height 0.4
+              radius 0.015 
+              subdivision 24    
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            }
+           ]
+          } 
+    ]
+  }
