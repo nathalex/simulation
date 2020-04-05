@@ -2,8 +2,9 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.008983567593941756 0.9348372163570828 0.35496291979166755 3.1526057897717394
-  position -0.08231135180432636 4.777188596194855 -4.995933125242997
+  fieldOfView 0.785398
+  orientation 0.1330930702139669 0.9502219635557642 0.28171697612541585 4.060322588031672
+  position -0.5913326673043211 1.5238996507423164 -0.35279505461260574
 }
 
 TexturedBackground {
@@ -11,17 +12,17 @@ TexturedBackground {
 }
 
 DEF TANK RectangleArena {
-  floorSize 5 2
-  floorAppearance OldSteel {
+  floorSize 10 4
+  floorAppearance ThreadMetalPlate {
   }
-  wallHeight 2
+  wallHeight 4
   wallAppearance PBRAppearance {
     transparency 0.95
     emissiveColor 0.8 0.8 0.8
   }
 }
 DEF STILL_WATER Fluid {
-  translation 0 0.9 0
+  translation 0 1.9 0
   children [
     DEF S Shape {
       appearance DEF WATER_APPEARANCE PBRAppearance {
@@ -31,173 +32,514 @@ DEF STILL_WATER Fluid {
         metalness 0
       }
       geometry Box {
-        size 5 1.8 2 
+        size 10 3.8 4 
         }
       }
     ]
   }
   
   DEF ROV Robot {
+    name "ROV"
     translation 0 1 0
+    controller "my_controller"
+    immersionProperties ImmersionProperties {
+      fluidName "fluid"
+      referenceArea "immersed area" 
+      dragForceCoefficients              0 0 0  
+      dragTorqueCoefficients             0 0 0     
+      viscousResistanceForceCoefficient  0          
+      viscousResistanceTorqueCoefficient 0
+     }
+    physics Physics{
+      # density 1e+03
+      mass 0.9749
+      centerOfMass -0.3407 10.799 -0.1136
+      inertiaMatrix  [ 1 1 1, 0 0 0]
+      damping Damping{
+        linear 0.2
+        angular 0.2
+      }
+    }               
     children[
-      DEF bottom Group{
-        children[
-          PipeSection {
-              translation 0.005 -0.08 0.018
-              rotation 0 0 -1 -1.5708
-              name "pipe bottom 1"
-              height 0.035
-              radius 0.015
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+    DEF bottom Solid{
+          name "bottom"
+          physics Physics{
+            # density 1e+03
+            mass 0.256
+            centerOfMass 0.055 -0.08 0.1365
+            inertiaMatrix  [ 1 1 1, 0 0 0]
+            damping Damping{
+              linear 0.2
+              angular 0.2
             }
-            TJoint {
-               translation 0.06 -0.071 0.015
-               rotation    1 0 0 2.8798
-               name        "T joint pipe bottom 1"
-               scale       0.45 0.45 0.45
-               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
-            }
-            PipeSection {
-              translation 0.111 -0.08 0.02
-              rotation 0 0 1 1.5708
-              name "pipe bottom 2"
-              height 0.035
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
-            }
-            PipeSection {
-              translation 0.005 -0.08 0.255
-              rotation 0 0 1 1.5708
-              name "pipe bottom 3"
-              height 0.035
-              radius 0.015
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
-            }
-            TJoint {
-               translation 0.055 -0.068 0.2583
-               rotation    1 0 0 -2.8798
-               name        "T joint pipe bottom 2"
-               scale       0.5 0.5 0.5
-               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
-            }
-            PipeSection {
-              translation 0.111 -0.08 0.255
-              rotation 0 0 1 1.5708
-              name "pipe bottom 4"
-              height 0.035
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
-            }
-            LJoint{
-              translation 0.15 -0.08 0.235
-              rotation -0.577 0.577 -0.577 -2.09
-              name        "L joint pipe bottom 1"
-              scale       0.5 0.5 0.5
-              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
-            }
-            LJoint{
-              translation -0.04 -0.08 0.23
-              rotation 0 -0.707 0.707 3.138
-              name        "L joint pipe bottom 2"
-              scale       0.5 0.5 0.5
-              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
-            }
-            LJoint{
-              translation -0.04 -0.08 0.04
-              rotation 0.002 0.708 0.706 -3.141
-              name        "L joint pipe bottom 3"
-              scale       0.5 0.5 0.5
-              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
-            }
-            LJoint{
-              translation 0.15 -0.08 0.04
-              rotation 0.577 -0.577 -0.577 -2.095
-              name        "L joint pipe bottom 4"
-              scale       0.5 0.5 0.5
-              appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
-            }
-             PipeSection {
-              translation -0.06 -0.08 0.14
-              rotation 0.577 0.577 0.577 2.0944
-              name "pipe bottom 5"
-              height 0.15
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
-            }
-            PipeSection {
-              translation 0.17 -0.08 0.14
-              rotation 0.577 0.577 0.577 2.0944
-              name "pipe bottom 6"
-              height 0.15
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
-            }
-            PipeSection {
-              translation 0.053 -0.055 0.135
-              rotation 0 0 -1 -1.571
-              name "pipe bottom 7"
-              height 0.25
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
-            }
-           ]
-          }
-        DEF midsection Group{
+           }
+           boundingObject Transform{
+             translation 0.06 -0.07 0.135
+             children[
+             Box{
+               size 0.26 0.05 0.26
+               }
+               ]
+           }
           children[
-            PipeSection {
+            SolidPipe {
+                translation 0.005 -0.08 0.018
+                rotation 0 0 -1 -1.5708
+                name "pipe bottom 1"
+                height 0.035
+                radius 0.015
+                thickness 0.0015
+                subdivision 24    
+                physics Physics{
+                  # density 1e+03
+                  mass 0.0035
+                  centerOfMass 0.005 -0.08 0.018
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }
+                enableBoundingObject TRUE
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }        
+              }
+              TJoint {
+                 translation 0.06 -0.071 0.015
+                 rotation    1 0 0 2.8798
+                 name        "T joint pipe bottom 1"
+                 scale       0.45 0.45 0.45
+                 appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+              }
+              SolidPipe {
+                translation 0.111 -0.08 0.02
+                rotation 0 0 1 1.5708
+                name "pipe bottom 2"
+                height 0.035
+                radius 0.015 
+                thickness 0.0015
+                subdivision 24  
+                physics Physics{
+                  # density 1e+03
+                  mass 0.0035
+                  centerOfMass 0.111 -0.08 0.02
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }  
+                enableBoundingObject TRUE
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+              }
+              SolidPipe {
+                translation 0.005 -0.08 0.255
+                rotation 0 0 1 1.5708
+                name "pipe bottom 3"
+                height 0.035
+                radius 0.015
+                thickness 0.015
+                subdivision 24
+                physics Physics{
+                  # density 1e+03
+                  mass 0.0035
+                  centerOfMass 0.005 -0.08 0.255
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }   
+                enableBoundingObject TRUE 
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+              }
+              TJoint {
+                 translation 0.055 -0.068 0.2583
+                 rotation    1 0 0 -2.8798
+                 name        "T joint pipe bottom 2"
+                 scale       0.5 0.5 0.5
+                 appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+              }
+              SolidPipe {
+                translation 0.111 -0.08 0.255
+                rotation 0 0 1 1.5708
+                name "0.9191"
+                height 0.035
+                radius 0.015 
+                thickness 0.0015
+                subdivision 24  
+                physics Physics{
+                  # density 1e+03
+                  mass 0.0035
+                  centerOfMass 0.111 -0.08 0.255
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }  
+                enableBoundingObject TRUE
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+              }
+              LJoint{
+                translation 0.15 -0.08 0.235
+                rotation -0.577 0.577 -0.577 -2.09
+                name        "L joint pipe bottom 1"
+                scale       0.5 0.5 0.5
+                appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+              }
+              LJoint{
+                translation -0.04 -0.08 0.23
+                rotation 0 -0.707 0.707 3.138
+                name        "L joint pipe bottom 2"
+                scale       0.5 0.5 0.5
+                appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+              }
+              LJoint{
+                translation -0.04 -0.08 0.04
+                rotation 0.002 0.708 0.706 -3.141
+                name        "L joint pipe bottom 3"
+                scale       0.5 0.5 0.5
+                appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+              }
+              LJoint{
+                translation 0.15 -0.08 0.04
+                rotation 0.577 -0.577 -0.577 -2.095
+                name        "L joint 0.9191"
+                scale       0.5 0.5 0.5
+                appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
+              }
+              SolidPipe {
+                translation -0.06 -0.08 0.14
+                rotation 0.577 0.577 0.577 2.0944
+                name "pipe bottom 5"
+                height 0.15
+                radius 0.015 
+                thickness 0.0015
+                subdivision 24  
+                physics Physics{
+                  # density 1e+03
+                  mass 0.010
+                  centerOfMass -0.06 -0.08 0.14
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }  
+                enableBoundingObject TRUE
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+              }
+              SolidPipe {
+                translation 0.17 -0.08 0.14
+                rotation 0.577 0.577 0.577 2.0944
+                name "pipe bottom 6"
+                height 0.15
+                radius 0.015 
+                thickness 0.0015
+                subdivision 24  
+                physics Physics{
+                  # density 1e+03
+                  mass 0.010
+                  centerOfMass 0.17 -0.08 0.14
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }  
+                enableBoundingObject TRUE  
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+              }
+              SolidPipe {
+                translation 0.053 -0.055 0.135
+                rotation 0 0 -1 -1.571
+                name "pipe bottom 7"
+                height 0.25
+                radius 0.015 
+                thickness 0.0015
+                subdivision 24  
+                physics Physics{
+                  # density 1e+03
+                  mass 0.010
+                  centerOfMass 0.053 -0.055 0.135
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }
+                enableBoundingObject TRUE    
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+              }
+             ]
+            }
+        DEF midsection Solid{
+          name "midsection"
+          physics Physics{
+            # density 1e+03
+            mass 0.063
+            centerOfMass 0.055 0.15 0.1365
+            inertiaMatrix  [ 1 1 1, 0 0 0]
+            damping Damping{
+              linear 0.2
+              angular 0.2
+            }
+           }
+           boundingObject Transform{
+             translation 0.06 0.09 0.136
+             children[
+               Box{
+                 size 0.1 0.35 0.1
+                 }
+                ]
+           }
+          children[
+            SolidPipe {
               translation 0.06 0.0869 -0.0266
               rotation 1 0 0 -0.262
               name "pipe mid 1"
               height 0.27
               radius 0.015 
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                  # density 1e+03
+                  mass 0.014
+                  centerOfMass 0.06 0.0869 -0.0266
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }    
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
-            PipeSection {
+            SolidPipe {
               translation 0.055 0.0827 0.2985
               rotation 1 0 0 -2.88
               name "pipe mid 2"
               height 0.27
-              radius 0.015 
-              subdivision 24    
+              radius 0.015
+              thickness 0.0015 
+              subdivision 24  
+              physics Physics{
+                  # density 1e+03
+                  mass 0.014
+                  centerOfMass 0.055 0.0827 0.2985
+                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  damping Damping{
+                    linear 0.2
+                    angular 0.2
+                    }
+                }     
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
-            PipeSection {
-              translation 0.06 0.0769 0.106
-              rotation 0 0 0 0
-              name "pipe mid 3"
-              height 0.3
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+            DEF midpipe1 Transform{
+              translation 0.061155 -0.14981 0.288192
+              rotation 0.03313176403321037 0.9983740617562442 0.046384469646494515 1.57214
+              scale 0.09 0.09 0.09
+              children [
+                Shape{
+                   appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+                      geometry Extrusion {
+                        crossSection [ #this is a circle, using trig
+                          -1 0
+                          -0.866 0.5
+                          -0.707 0.707
+                          -0.5 0.866
+                          0 1
+                          0.5 0.866
+                          0.707 0.707
+                          0.866 0.5
+                          1 0
+                          0.866 -0.5
+                          0.707 -0.707
+                          0.5 -0.866
+                          0 -1
+                          -0.5 -0.866
+                          -0.707 -0.707
+                          -0.866 -0.5
+                          # -1 0
+                          -1 -0.001
+                          -1.3 0
+                          -1.1258 -0.655
+                          -0.9191 -0.9191
+                          -0.655 -1.1258
+                          0 -1.3
+                          0.655 -1.1258
+                          0.9191 -0.9191
+                          1.1258 -0.655
+                          1.3 0
+                          1.1258 0.655
+                          0.9191 0.9191
+                          0.655 1.1258
+                          0 1.3
+                          -0.655 1.1258
+                          -0.9191 0.9191
+                          -1.1258 0.655
+                          -1.3 0.001
+                          -1 0
+                        ]
+                        spine [ #coordinates from Enrico's photo through apps.automeris.io
+                          1.6494464944649433 4.447601476014749 0
+                          1.7241082410824095 4.0675276752767424 0
+                          1.7711562115621142 3.689913899138982 0
+                          1.762546125461253 3.310762607626067 0
+                          1.7597785977859765 2.9359163591635827 0
+                          1.7342558425584244 2.553075030750299 0
+                          1.7035055350553492 2.1751537515375077 0
+                          1.6456949569495684 1.8079950799507923 0
+                          1.5872693726937259 1.4316113161131547 0
+                          1.5288437884378835 1.0552275522755174 0
+                          1.3990774907749069 0.6920664206642023 0
+                          
+                        ]
+                        scale [ #uniform for each segment
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                        ]
+                        beginCap TRUE
+                        endCap TRUE
+                        ccw FALSE
+                        solid TRUE
+                        convex TRUE
+                        creaseAngle 0.0
+                        splineSubdivision 24
+                        }
+                      castShadows TRUE
+                      isPickable TRUE
+                    }
+                   ]
+                  }
+                  DEF midpipe2 Transform{
+                  translation 0.0603153 -0.15 -0.0170887
+                  rotation -0.04740402737238043 -0.9977503276760962 0.04740402737238043 1.58784
+                  scale 0.09 0.09 0.09
+                  children [
+                    Shape{
+                       appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
+                          geometry Extrusion {
+                            crossSection [ #this is a circle, using trig
+                              -1 0
+                              -0.866 0.5
+                              -0.707 0.707
+                              -0.5 0.866
+                              0 1
+                              0.5 0.866
+                              0.707 0.707
+                              0.866 0.5
+                              1 0
+                              0.866 -0.5
+                              0.707 -0.707
+                              0.5 -0.866
+                              0 -1
+                              -0.5 -0.866
+                              -0.707 -0.707
+                              -0.866 -0.5
+                              # -1 0
+                              -1 -0.001
+                              -1.3 0
+                              -1.1258 -0.655
+                              -0.9191 -0.9191
+                              -0.655 -1.1258
+                              0 -1.3
+                              0.655 -1.1258
+                              0.9191 -0.9191
+                              1.1258 -0.655
+                              1.3 0
+                              1.1258 0.655
+                              0.9191 0.9191
+                              0.655 1.1258
+                              0 1.3
+                              -0.655 1.1258
+                              -0.9191 0.9191
+                              -1.1258 0.655
+                              -1.3 0.001
+                              -1 0
+                            ]
+                         spine [ #coordinates from Enrico's photo through apps.automeris.io
+                          1.6494464944649433 4.447601476014749 0
+                          1.7241082410824095 4.0675276752767424 0
+                          1.7711562115621142 3.689913899138982 0
+                          1.762546125461253 3.310762607626067 0
+                          1.7597785977859765 2.9359163591635827 0
+                          1.7342558425584244 2.553075030750299 0
+                          1.7035055350553492 2.1751537515375077 0
+                          1.6456949569495684 1.8079950799507923 0
+                          1.5872693726937259 1.4316113161131547 0
+                          1.5288437884378835 1.0552275522755174 0
+                          1.3990774907749069 0.6920664206642023 0
+                          
+                        ]
+                        scale [ #uniform for each segment
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                          0.15 0.15
+                        ]
+                        beginCap TRUE
+                        endCap TRUE
+                        ccw FALSE
+                        solid TRUE
+                        convex FALSE
+                        creaseAngle 0.0
+                        splineSubdivision 24
+                        }
+                      castShadows TRUE
+                      isPickable TRUE
+                    }
+                   ]
+                  }
+                 ]
+                }
+      DEF top Solid{
+        name "top"
+        physics Physics{
+            # density 1e+03
+            mass 0.28898
+            centerOfMass 0.055 0.238 0.1365
+            inertiaMatrix  [ 1 1 1, 0 0 0]
+            damping Damping{
+              linear 0.2
+              angular 0.2
             }
-            PipeSection {
-              translation 0.06 0.0769 0.1634
-              rotation 0 0 0 0
-              name "pipe mid 4"
-              height 0.3
-              radius 0.015 
-              subdivision 24    
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
-            }
-          ]
-        }
-        DEF top Group{
+           }
+        boundingObject Transform{
+             translation 0.06 0.23 0.136
+             children[
+             Box{
+               size 0.38 0.08 0.428
+               }
+              ]
+           }
         children[
-          PipeSection {
+          SolidPipe {
               translation -0.025 0.238 -0.068
               rotation 0 0 -1 -1.5708
               name "pipe top 1"
               height 0.1045
               radius 0.015
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.007
+                centerOfMass -0.025 0.238 -0.068
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               }
+              enableBoundingObject TRUE  
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
             }
             TJoint {
@@ -207,22 +549,46 @@ DEF STILL_WATER Fluid {
                scale       0.45 0.45 0.45
                appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
             }
-            PipeSection {
+            SolidPipe {
               translation 0.145 0.238 -0.068
               rotation 0 0 1 1.5708
               name "pipe top 2"
               height 0.1045
               radius 0.015 
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.007
+                centerOfMass -0.025 0.238 -0.068
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               }
+              enableBoundingObject TRUE   
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
-            PipeSection {
+            SolidPipe {
               translation -0.025 0.238 0.338
               rotation 0 0 1 1.5708
               name "pipe top 3"
               height 0.1045
               radius 0.015
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.007
+                centerOfMass -0.025 0.238 -0.068
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               }   
+              enableBoundingObject TRUE
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
             }
             TJoint {
@@ -232,13 +598,25 @@ DEF STILL_WATER Fluid {
                scale       0.5 0.5 0.5
                appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
             }
-            PipeSection {
+            SolidPipe {
               translation 0.145 0.238 0.338
               rotation 0 0 1 1.5708
-              name "pipe bottom 4"
+              name "pipe top 4"
               height 0.1045
               radius 0.015 
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.007
+                centerOfMass 0.145 0.238 0.338
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               }
+              enableBoundingObject TRUE   
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             LJoint{
@@ -269,34 +647,723 @@ DEF STILL_WATER Fluid {
               scale       0.5 0.5 0.5
               appearance  CorrugatedPvc { textureTransform TextureTransform { scale 3 3 } }
             }
-             PipeSection {
+             SolidPipe {
               translation -0.12 0.238 0.14
               rotation 0.577 0.577 0.577 2.0944
               name "pipe top 5"
               height 0.3
               radius 0.015 
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.0163
+                centerOfMass -0.12 0.238 0.14
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               }   
+              enableBoundingObject TRUE 
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
-            PipeSection {
+            SolidPipe {
               translation 0.24 0.238 0.14
               rotation 0.577 0.577 0.577 2.0944
               name "pipe top 6"
               height 0.3
               radius 0.015 
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.0163
+                centerOfMass 0.24 0.238 0.14
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               }  
+              enableBoundingObject TRUE   
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
-            PipeSection {
+            SolidPipe {
               translation 0.058 0.215 0.135
               rotation 0 0 -1 -1.571
               name "pipe top 7"
               height 0.4
               radius 0.015 
-              subdivision 24    
+              thickness 0.0015
+              subdivision 24  
+              physics Physics{
+                # density 1e+03
+                mass 0.0231
+                centerOfMass 0.058 0.215 0.135
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+               } 
+              enableBoundingObject TRUE   
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
            ]
-          } 
-    ]
-  }
+          }
+          DEF grapple Solid{
+             physics Physics{
+                mass 0.001
+                centerOfMass -0.3407 10.799 -0.1136
+                inertiaMatrix  [ 1 1 1, 0 0 0]
+                damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
+              }
+            name "grapple"
+            children[
+              DEF hook1 Transform{
+                translation 0.077 -0.185 0.147
+                rotation 0.06759588996641124 0.989472853127702 0.12796198100597692 2.2832
+                scale 0.01 0.01 0.01
+                children[
+                  DEF hookShape Shape{
+                    appearance BrushedAluminium { textureTransform NULL }
+                    geometry Extrusion {
+                      crossSection [ #this is a circle, using trig
+                        -1 0
+                        -0.866 0.5
+                        -0.707 0.707
+                        -0.5 0.866
+                        0 1
+                        0.5 0.866
+                        0.707 0.707
+                        0.866 0.5
+                        1 0
+                        0.866 -0.5
+                        0.707 -0.707
+                        0.5 -0.866
+                        0 -1
+                        -0.5 -0.866
+                        -0.707 -0.707
+                        -0.866 -0.5
+                        -1 0
+                      ]
+                      spine [ #coordinates from hook photo through apps.automeris.io
+                        0.42647058823529416 11.147058823529425 0
+                        0.35294117647058826 11.935908691834957 0
+                        0.5882352941176471 12.256365232660244 0
+                        0.823529411764706 12.323090430201946 0
+                        1.0441176470588236 12.061018437225652 0
+                        1.088235294117647 11.659350307287108 0
+                        1.102941176470588 11.182177348551374 0
+                        1.1617647058823528 10.198858647936799 0
+                        1.1323529411764706 9.511413520632145 0
+                        1.147058823529412 8.94468832309044 0
+                        1.102941176470588 8.28665496049167 0
+                        1.147058823529412 7.6163301141352155 0
+                        1.1617647058823528 6.766022827041272 0
+                        1.2205882352941178 5.767778753292368 0
+                        1.1911764705882353 4.975856014047415 0
+                        1.1911764705882353 4.080333625987711 0
+                        1.3235294117647058 3.323090430201935 0
+                        1.5588235294117647 2.5539947322212484 0
+                        2 1.8358208955223905 0
+                        2.691176470588235 1.0952589991220378 0
+                        3.4117647058823533 0.6540825285338041 0
+                        4.426470588235294 0.37093942054433704 0
+                        5.4411764705882355 0.44600526777875515 0
+                        6.147058823529412 0.7058823529411775 0
+                        6.794117647058823 1.1281826163301147 0
+                        7.1911764705882355 1.6176470588235308 0
+                        7.5735294117647065 2.0618964003511895 0
+                        7.897058823529411 2.593942054433718 0
+                        8 3.059701492537318 0
+                        7.926470588235294 3.6395961369622523 0
+                        7.794117647058823 4.172958735733104 0
+                        7.617647058823529 4.4960491659350375 0
+                        7.264705882352942 4.888498683055319 0
+    
+                      ]
+                      scale [ #uniform for each segment
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                      ]
+                      beginCap TRUE
+                      endCap TRUE
+                      ccw TRUE
+                      solid TRUE
+                      convex TRUE
+                      creaseAngle 0.0
+                      splineSubdivision 16
+                      }
+                    castShadows TRUE
+                    isPickable TRUE
+                  }
+                 ]
+                }
+              DEF hook2 Transform{
+                translation 0.0547955 -0.185993 0.159479
+                rotation -0.1331650446756149 -0.9713353258738288 -0.19691306606247408 -0.8826553071795864
+                scale 0.01 0.01 0.01
+                children[
+                  Shape{
+                    appearance BrushedAluminium { textureTransform NULL }
+                    geometry Extrusion {
+                      crossSection [ #this is a circle, using trig
+                        -1 0
+                        -0.866 0.5
+                        -0.707 0.707
+                        -0.5 0.866
+                        0 1
+                        0.5 0.866
+                        0.707 0.707
+                        0.866 0.5
+                        1 0
+                        0.866 -0.5
+                        0.707 -0.707
+                        0.5 -0.866
+                        0 -1
+                        -0.5 -0.866
+                        -0.707 -0.707
+                        -0.866 -0.5
+                        -1 0
+                      ]
+                      spine [ #coordinates from hook photo through apps.automeris.io
+                        0.42647058823529416 11.147058823529425 0
+                        0.35294117647058826 11.935908691834957 0
+                        0.5882352941176471 12.256365232660244 0
+                        0.823529411764706 12.323090430201946 0
+                        1.0441176470588236 12.061018437225652 0
+                        1.088235294117647 11.659350307287108 0
+                        1.102941176470588 11.182177348551374 0
+                        1.1617647058823528 10.198858647936799 0
+                        1.1323529411764706 9.511413520632145 0
+                        1.147058823529412 8.94468832309044 0
+                        1.102941176470588 8.28665496049167 0
+                        1.147058823529412 7.6163301141352155 0
+                        1.1617647058823528 6.766022827041272 0
+                        1.2205882352941178 5.767778753292368 0
+                        1.1911764705882353 4.975856014047415 0
+                        1.1911764705882353 4.080333625987711 0
+                        1.3235294117647058 3.323090430201935 0
+                        1.5588235294117647 2.5539947322212484 0
+                        2 1.8358208955223905 0
+                        2.691176470588235 1.0952589991220378 0
+                        3.4117647058823533 0.6540825285338041 0
+                        4.426470588235294 0.37093942054433704 0
+                        5.4411764705882355 0.44600526777875515 0
+                        6.147058823529412 0.7058823529411775 0
+                        6.794117647058823 1.1281826163301147 0
+                        7.1911764705882355 1.6176470588235308 0
+                        7.5735294117647065 2.0618964003511895 0
+                        7.897058823529411 2.593942054433718 0
+                        8 3.059701492537318 0
+                        7.926470588235294 3.6395961369622523 0
+                        7.794117647058823 4.172958735733104 0
+                        7.617647058823529 4.4960491659350375 0
+                        7.264705882352942 4.888498683055319 0
+    
+                      ]
+                      scale [ #uniform for each segment
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                      ]
+                      beginCap TRUE
+                      endCap TRUE
+                      ccw TRUE
+                      solid TRUE
+                      convex TRUE
+                      creaseAngle 0.0
+                      splineSubdivision 16
+                      }
+                    castShadows TRUE
+                    isPickable TRUE
+                  }
+                 ]
+                }
+                DEF hook3 Transform{
+                translation 0.0384683 -0.184368 0.122941
+                rotation -0.32158103146702705 -0.9415440921310355 0.10040100982433971 0.932883
+                scale 0.01 0.01 0.01
+                children[
+                  Shape{
+                    appearance BrushedAluminium { textureTransform NULL }
+                    geometry Extrusion {
+                      crossSection [ #this is a circle, using trig
+                        -1 0
+                        -0.866 0.5
+                        -0.707 0.707
+                        -0.5 0.866
+                        0 1
+                        0.5 0.866
+                        0.707 0.707
+                        0.866 0.5
+                        1 0
+                        0.866 -0.5
+                        0.707 -0.707
+                        0.5 -0.866
+                        0 -1
+                        -0.5 -0.866
+                        -0.707 -0.707
+                        -0.866 -0.5
+                        -1 0
+                      ]
+                      spine [ #coordinates from hook photo through apps.automeris.io
+                        0.42647058823529416 11.147058823529425 0
+                        0.35294117647058826 11.935908691834957 0
+                        0.5882352941176471 12.256365232660244 0
+                        0.823529411764706 12.323090430201946 0
+                        1.0441176470588236 12.061018437225652 0
+                        1.088235294117647 11.659350307287108 0
+                        1.102941176470588 11.182177348551374 0
+                        1.1617647058823528 10.198858647936799 0
+                        1.1323529411764706 9.511413520632145 0
+                        1.147058823529412 8.94468832309044 0
+                        1.102941176470588 8.28665496049167 0
+                        1.147058823529412 7.6163301141352155 0
+                        1.1617647058823528 6.766022827041272 0
+                        1.2205882352941178 5.767778753292368 0
+                        1.1911764705882353 4.975856014047415 0
+                        1.1911764705882353 4.080333625987711 0
+                        1.3235294117647058 3.323090430201935 0
+                        1.5588235294117647 2.5539947322212484 0
+                        2 1.8358208955223905 0
+                        2.691176470588235 1.0952589991220378 0
+                        3.4117647058823533 0.6540825285338041 0
+                        4.426470588235294 0.37093942054433704 0
+                        5.4411764705882355 0.44600526777875515 0
+                        6.147058823529412 0.7058823529411775 0
+                        6.794117647058823 1.1281826163301147 0
+                        7.1911764705882355 1.6176470588235308 0
+                        7.5735294117647065 2.0618964003511895 0
+                        7.897058823529411 2.593942054433718 0
+                        8 3.059701492537318 0
+                        7.926470588235294 3.6395961369622523 0
+                        7.794117647058823 4.172958735733104 0
+                        7.617647058823529 4.4960491659350375 0
+                        7.264705882352942 4.888498683055319 0
+    
+                      ]
+                      scale [ #uniform for each segment
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                      ]
+                      beginCap TRUE
+                      endCap TRUE
+                      ccw TRUE
+                      solid TRUE
+                      convex TRUE
+                      creaseAngle 0.0
+                      splineSubdivision 16
+                      }
+                    castShadows TRUE
+                    isPickable TRUE
+                  }
+                 ]
+                }
+                DEF hook4 Transform{
+                translation 0.0742513 -0.185994 0.119562
+                rotation 0.06759767309128842 0.9894726061190903 -0.12796294906158848 -2.2832153071795864
+                scale 0.01 0.01 0.01
+                children[
+                  Shape{
+                    appearance BrushedAluminium { textureTransform NULL }
+                    geometry Extrusion {
+                      crossSection [ #this is a circle, using trig
+                        -1 0
+                        -0.866 0.5
+                        -0.707 0.707
+                        -0.5 0.866
+                        0 1
+                        0.5 0.866
+                        0.707 0.707
+                        0.866 0.5
+                        1 0
+                        0.866 -0.5
+                        0.707 -0.707
+                        0.5 -0.866
+                        0 -1
+                        -0.5 -0.866
+                        -0.707 -0.707
+                        -0.866 -0.5
+                        -1 0
+                      ]
+                      spine [ #coordinates from hook photo through apps.automeris.io
+                        0.42647058823529416 11.147058823529425 0
+                        0.35294117647058826 11.935908691834957 0
+                        0.5882352941176471 12.256365232660244 0
+                        0.823529411764706 12.323090430201946 0
+                        1.0441176470588236 12.061018437225652 0
+                        1.088235294117647 11.659350307287108 0
+                        1.102941176470588 11.182177348551374 0
+                        1.1617647058823528 10.198858647936799 0
+                        1.1323529411764706 9.511413520632145 0
+                        1.147058823529412 8.94468832309044 0
+                        1.102941176470588 8.28665496049167 0
+                        1.147058823529412 7.6163301141352155 0
+                        1.1617647058823528 6.766022827041272 0
+                        1.2205882352941178 5.767778753292368 0
+                        1.1911764705882353 4.975856014047415 0
+                        1.1911764705882353 4.080333625987711 0
+                        1.3235294117647058 3.323090430201935 0
+                        1.5588235294117647 2.5539947322212484 0
+                        2 1.8358208955223905 0
+                        2.691176470588235 1.0952589991220378 0
+                        3.4117647058823533 0.6540825285338041 0
+                        4.426470588235294 0.37093942054433704 0
+                        5.4411764705882355 0.44600526777875515 0
+                        6.147058823529412 0.7058823529411775 0
+                        6.794117647058823 1.1281826163301147 0
+                        7.1911764705882355 1.6176470588235308 0
+                        7.5735294117647065 2.0618964003511895 0
+                        7.897058823529411 2.593942054433718 0
+                        8 3.059701492537318 0
+                        7.926470588235294 3.6395961369622523 0
+                        7.794117647058823 4.172958735733104 0
+                        7.617647058823529 4.4960491659350375 0
+                        7.264705882352942 4.888498683055319 0
+    
+                      ]
+                      scale [ #uniform for each segment
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                        0.1 0.1
+                      ]
+                      beginCap TRUE
+                      endCap TRUE
+                      ccw TRUE
+                      solid TRUE
+                      convex TRUE
+                      creaseAngle 0.0
+                      splineSubdivision 16
+                      }
+                    castShadows TRUE
+                    isPickable TRUE
+                  }
+                 ]
+                }
+              ]
+              boundingObject Group{
+                children[
+                  USE hook1
+                  USE hook2
+                  USE hook3
+                  USE hook4
+                ]
+              }
+            }
+            DEF flotation Group{
+                children[
+                  SolidPipe{
+                    translation -0.103 0.24 0.323
+                    rotation -0.3574058186283875 -0.35740681862788 0.8628565621288802 1.71778
+                    name "float1"
+                    height 0.025
+                    radius 0.03
+                    thickness 0.025
+                    subdivision 24
+                    accuracy 0.0000001
+                    contactMaterial "default"
+                    appearance Rubber {textureTransform NULL}
+                    physics Physics {
+                      density 1e+03
+                      damping NULL
+                    }       
+                    enableBoundingObject TRUE
+                  }
+                  SolidPipe{
+                    translation -0.11 0.24 -0.0480345
+                    rotation 0.6785950574695392 0.6786010574700474 -0.2810860238048953 -2.593575307179586
+                    name "float2"
+                    height 0.025
+                    radius 0.03
+                    thickness 0.025
+                    subdivision 24
+                    accuracy 0.0000001
+                    contactMaterial "default"
+                    appearance Rubber {textureTransform NULL}
+                    physics Physics {
+                      density 1e+03
+                      damping NULL
+                    }       
+                    enableBoundingObject TRUE
+                  }
+                  SolidPipe{
+                    translation 0.221929 0.24 -0.0480346
+                    rotation -0.35740507410616273 -0.3574060741063701 0.8628571789091403 1.71778
+                    name "float3"
+                    height 0.04
+                    radius 0.03
+                    thickness 0.025
+                    subdivision 24
+                    accuracy 0.0000001
+                    contactMaterial "default"
+                    appearance Rubber {textureTransform NULL}
+                    physics Physics {
+                      density 1e+03
+                      damping NULL
+                    }       
+                    enableBoundingObject TRUE
+                  }
+                  SolidPipe{
+                    translation 0.225858 0.24 0.314894
+                    rotation 0.6785950574695392 0.6786010574700474 -0.2810860238048953 -2.593575307179586
+                    name "float4"
+                    height 0.04
+                    radius 0.03
+                    thickness 0.025
+                    subdivision 24
+                    accuracy 0.0001
+                    contactMaterial "default"
+                    appearance Rubber {textureTransform NULL}
+                    physics Physics {
+                      density 1e+03
+                      damping NULL
+                    }      
+                    enableBoundingObject TRUE
+                  }
+                  SolidRoundedBox{
+                    translation 0.059 0.24 0.133
+                    rotation -0.5773482691869614 -0.57735126918836 0.57735126918836 2.09441
+                    name "float5"
+                    size 0.02 0.03 0.1
+                    borderRadius 0.005
+                    subdivision 24
+                    # accuracy 0.0001
+                    contactMaterial "default"
+                    appearance Rubber {textureTransform NULL}
+                    physics Physics {
+                      density 1e+03
+                      damping NULL
+                    }       
+                    enableBoundingObject TRUE
+                  }
+                  SolidRoundedBox{
+                    translation 0.0590005 0.19 0.133
+                    rotation -0.5773482691869614 -0.57735126918836 0.57735126918836 2.09441
+                    name "float6"
+                    size 0.02 0.03 0.1
+                    borderRadius 0.005
+                    subdivision 24
+                    # accuracy 0.0000001
+                    contactMaterial "default"
+                    appearance Rubber {textureTransform NULL}
+                    physics Physics {
+                      density 1e+03
+                      damping NULL
+                    }               
+                    enableBoundingObject TRUE
+                  }
+                 ]
+               }
+               DEF motors Group{
+                 children[
+                   DEF yaw Transform{
+                     translation 0.24 0.180001 0.13
+                     rotation 0.5773489358556708 0.5773509358554485 -0.5773509358554485 -2.094395307179586
+                     scale 1 1 1
+                     children[
+                       DEF motorshape Group{
+                         children[
+                           Shape {#Motor
+                              appearance BrushedAluminium { textureTransform NULL }
+                              geometry Cylinder {
+                                height 0.05
+                                radius 0.02
+                                subdivision 24
+                                }
+                           }
+                           Transform{
+                             translation 0 0.025 0
+                             children [
+                               Shape {#Axle
+                                  appearance BrushedAluminium { textureTransform NULL }
+                                  geometry Cylinder {
+                                    height 0.02
+                                    radius 0.001
+                                    subdivision 24
+                                    }
+                                 }
+                               ]
+                             }
+                             Transform{
+                             translation 0 -0.026 0
+                             children [
+                               Shape {#plastic bit
+                                  appearance MetalPipePaint { textureTransform NULL }
+                                  geometry Cylinder {
+                                    height 0.001
+                                    radius 0.02
+                                    subdivision 24
+                                    }
+                                 }
+                               ]
+                             }    
+                           ]
+                        }
+                      ]
+                     }
+                     DEF surge Transform{
+                       translation 0.07 -0.059999 0.2
+                       rotation 1.03407e-06 -2.39745e-09 1 1.5708
+                       scale 1 1 1
+                       children[
+                         USE motorshape
+                       ]
+                     }
+                    ]
+                   }
+        
+               DEF YAW Propeller {
+                          shaftAxis 0.24 0.021522 0.200092 # calculated from Online tools - vector rotation in 3D
+                          centerOfThrust 0.24 0.18 0.09
+                          thrustConstants  1 0 
+                          torqueConstants 1 0 
+                          fastHelixThreshold 75.4   # [0, inf)
+                          device  RotationalMotor {
+                              name      "yaw motor"              # any string
+                              maxTorque 10                              # [0, inf)
+                              sound     "sounds/rotational_motor.wav"   # any string
+                            }
+                          fastHelix DEF FAST_HELIX Solid {
+                          name "fast helix"
+                            translation 0.24 0.18 0.09
+                            rotation 1 0 0 -1.5707953071795862
+                            scale 0.25 0.25 0.25
+                            children [
+                              DEF FAST_MAIN_HELIX_SHAPE Shape {
+                                appearance DEF FAST_HELIX_APPEARANCE PBRAppearance {
+                                  baseColorMap ImageTexture {
+                                    url [
+                                      "textures/blurred_helix.png"
+                                    ]
+                                  }
+                                  transparency 0.5
+                                  roughness 0.5
+                                  metalness 0
+                                }
+                                geometry Cylinder {
+                                  height 0.003
+                                  radius 0.145
+                                  side FALSE
+                                  subdivision 24
+                                }
+                              }
+                            ]
+                          }
+                          slowHelix DEF SLOW_HELIX Solid {
+                          name "slow helix"
+                            translation 0.24 0.18 0.09
+                            rotation 1 0 0 1.5708
+                            scale 0.25 0.25 0.25
+                            children [
+                              DEF SLOW_MAIN_HELIX_TRANSFORM Transform {
+                                rotation 1 0 0 1.5708
+                                children [
+                                  DEF SLOW_MAIN_HELIX_GROUP Group {
+                                    children [
+                                      Shape {
+                                        appearance Rubber {textureTransform NULL}
+                                        geometry Capsule {
+                                          height 0.02
+                                          radius 0.01
+                                        }
+                                      }
+                                      Shape {
+                                        appearance Rubber {textureTransform NULL}
+                                        geometry Cylinder {
+                                          height 0.07
+                                          radius 0.004
+                                        }
+                                      }
+                                      DEF RIGHT_BLADE Transform {
+                                        translation 0 0.09 0
+                                        rotation 0 1 0 0.3618
+                                        children [
+                                          DEF BLADE_SHAPE Shape {
+                                            appearance PBRAppearance {
+                                              baseColor 0.8 0.8 0.8
+                                              roughness 1
+                                              metalness 0
+                                            }
+                                            geometry Box {
+                                              size 0.01 0.11 0.004
+                                            }
+                                          }
+                                        ]
+                                      }
+                                      DEF RIGHT_BLADE Transform {
+                                        translation 0 -0.09 0
+                                        rotation 0 1 0 -0.3618
+                                        children [
+                                          DEF BLADE_SHAPE Shape {
+                                            appearance PBRAppearance {
+                                              baseColor 0.8 0.8 0.8
+                                              roughness 1
+                                              metalness 0
+                                            }
+                                            geometry Box {
+                                              size 0.01 0.11 0.004
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                           ]
+                        }
+                   }
+               DEF Sway Propeller {
+                      shaftAxis 1 0 0
+                      centerOfThrust 0 0 0
+                      thrustConstants  1 0 
+                      torqueConstants 1 0 
+                      fastHelixThreshold 75.4   # [0, inf)
+                      device  RotationalMotor {
+                          name      "sway motor"              # any string
+                          maxTorque 10                              # [0, inf)
+                          sound     "sounds/rotational_motor.wav"   # any string
+                        }
+                      fastHelix Transform{
+                        translation 0.03 -0.06 0.2
+                        rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                        children[
+                          USE FAST_HELIX
+                        ]
+                      }
+                      slowHelix Transform{
+                        translation 0.03 -0.06 0.2
+                        rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                        children[
+                          USE SLOW_HELIX
+                        ]
+                      }
+                      
+                    }
+                 ]
+                   
+          }
