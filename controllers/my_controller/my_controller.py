@@ -14,10 +14,18 @@ robot = Robot()
 timestep = int(robot.getBasicTimeStep())
 
 yawMotor = robot.getMotor('yaw motor')
-# swayMotor = robot.getMotor('sway motor')
+swayMotor = robot.getMotor('sway motor')
+surgeMotor = robot.getMotor('surge motor')
+heaveMotor = robot.getMotor('heave motor')
 yawMotor.setPosition(float('inf'))
-# swayMotor.setPosition(float('inf'))
-# swayMotor.setVelocity(0.0)
+swayMotor.setPosition(float('inf'))
+surgeMotor.setPosition(float('inf'))
+HeaveMotor.setPosition(float('inf'))
+yawMotor.setVelocity(0.0)
+swayMotor.setVelocity(0.0)
+surgeMotor.setVelocity(0.0)
+heaveMotor.setVelocity(0.0)
+
 
 # You should insert a getDevice-like function in order to get the
 # instance of a device of the robot. Something like:
@@ -27,9 +35,9 @@ yawMotor.setPosition(float('inf'))
 
 # Main loop:
 # - perform simulation steps until Webots is stopping the controller
-while robot.step(TIME_STEP) != -1:
-    yawMotor.setVelocity(6.28/4)
-    # swayMotor.setVelocity(6.28/2)
+while robot.step(timestep) != -1:
+    yawMotor.setVelocity(0.0)
+    swayMotor.setVelocity(0.0)
     # Read the sensors:
     # Enter here functions to read sensor data, like:
     #  val = ds.getValue()

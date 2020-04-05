@@ -22,7 +22,15 @@ DEF TANK RectangleArena {
   }
 }
 DEF STILL_WATER Fluid {
+  density 1000
   translation 0 1.9 0
+  boundingObject Transform{
+      translation 0 0 0
+      children[
+       Box {
+              size 10 3.8 4 
+            }]
+            }
   children [
     DEF S Shape {
       appearance DEF WATER_APPEARANCE PBRAppearance {
@@ -30,10 +38,13 @@ DEF STILL_WATER Fluid {
         transparency 0.8
         roughness 1.1102230246251565e-16
         metalness 0
+        
       }
+      
       geometry Box {
-        size 10 3.8 4 
+          size 10 3.8 4 
         }
+      
       }
     ]
   }
@@ -44,36 +55,37 @@ DEF STILL_WATER Fluid {
     controller "my_controller"
     immersionProperties ImmersionProperties {
       fluidName "fluid"
-      referenceArea "immersed area" 
-      dragForceCoefficients              0 0 0  
-      dragTorqueCoefficients             0 0 0     
-      viscousResistanceForceCoefficient  0          
-      viscousResistanceTorqueCoefficient 0
+      #referenceArea "immersed area" 
+      dragForceCoefficients              0.1 0 0  
+      dragTorqueCoefficients             0.001 0 0     
+      #viscousResistanceForceCoefficient  0          
+      viscousResistanceTorqueCoefficient 0.005
      }
+    
     physics Physics{
-      # density 1e+03
-      mass 0.9749
-      centerOfMass -0.3407 10.799 -0.1136
-      inertiaMatrix  [ 1 1 1, 0 0 0]
+      density 500
+      #mass 0.9749
+      #centerOfMass -0.3407 10.799 -0.1136
+      #inertiaMatrix  [ 1 1 1, 0 0 0]
       damping Damping{
         linear 0.2
         angular 0.2
       }
-    }               
+    }             
     children[
     DEF bottom Solid{
           name "bottom"
           physics Physics{
-            # density 1e+03
-            mass 0.256
-            centerOfMass 0.055 -0.08 0.1365
-            inertiaMatrix  [ 1 1 1, 0 0 0]
+            density 550
+            #mass 0.256
+            #centerOfMass 0.055 -0.08 0.1365
+            # inertiaMatrix  [ 1 1 1, 0 0 0]
             damping Damping{
               linear 0.2
               angular 0.2
             }
            }
-           boundingObject Transform{
+           boundingObject DEF bottombound Transform{
              translation 0.06 -0.07 0.135
              children[
              Box{
@@ -91,10 +103,10 @@ DEF STILL_WATER Fluid {
                 thickness 0.0015
                 subdivision 24    
                 physics Physics{
-                  # density 1e+03
-                  mass 0.0035
-                  centerOfMass 0.005 -0.08 0.018
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.0035
+                  #centerOfMass 0.005 -0.08 0.018
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -119,10 +131,10 @@ DEF STILL_WATER Fluid {
                 thickness 0.0015
                 subdivision 24  
                 physics Physics{
-                  # density 1e+03
-                  mass 0.0035
-                  centerOfMass 0.111 -0.08 0.02
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.0035
+                  #centerOfMass 0.111 -0.08 0.02
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -137,13 +149,13 @@ DEF STILL_WATER Fluid {
                 name "pipe bottom 3"
                 height 0.035
                 radius 0.015
-                thickness 0.015
+                thickness 0.0015
                 subdivision 24
                 physics Physics{
-                  # density 1e+03
-                  mass 0.0035
-                  centerOfMass 0.005 -0.08 0.255
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.0035
+                  #centerOfMass 0.005 -0.08 0.255
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -168,10 +180,10 @@ DEF STILL_WATER Fluid {
                 thickness 0.0015
                 subdivision 24  
                 physics Physics{
-                  # density 1e+03
-                  mass 0.0035
-                  centerOfMass 0.111 -0.08 0.255
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.0035
+                  #centerOfMass 0.111 -0.08 0.255
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -217,10 +229,10 @@ DEF STILL_WATER Fluid {
                 thickness 0.0015
                 subdivision 24  
                 physics Physics{
-                  # density 1e+03
-                  mass 0.010
-                  centerOfMass -0.06 -0.08 0.14
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.010
+                  #centerOfMass -0.06 -0.08 0.14
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -238,10 +250,10 @@ DEF STILL_WATER Fluid {
                 thickness 0.0015
                 subdivision 24  
                 physics Physics{
-                  # density 1e+03
-                  mass 0.010
-                  centerOfMass 0.17 -0.08 0.14
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.010
+                  #centerOfMass 0.17 -0.08 0.14
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -259,10 +271,10 @@ DEF STILL_WATER Fluid {
                 thickness 0.0015
                 subdivision 24  
                 physics Physics{
-                  # density 1e+03
-                  mass 0.010
-                  centerOfMass 0.053 -0.055 0.135
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 520
+                  #mass 0.010
+                  #centerOfMass 0.053 -0.055 0.135
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -276,16 +288,16 @@ DEF STILL_WATER Fluid {
         DEF midsection Solid{
           name "midsection"
           physics Physics{
-            # density 1e+03
-            mass 0.063
-            centerOfMass 0.055 0.15 0.1365
-            inertiaMatrix  [ 1 1 1, 0 0 0]
+            density 500
+            #mass 0.063
+            #centerOfMass 0.055 0.15 0.1365
+            # inertiaMatrix  [ 1 1 1, 0 0 0]
             damping Damping{
               linear 0.2
               angular 0.2
             }
            }
-           boundingObject Transform{
+           boundingObject DEF midsectionbound Transform{
              translation 0.06 0.09 0.136
              children[
                Box{
@@ -303,10 +315,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                  # density 1e+03
-                  mass 0.014
-                  centerOfMass 0.06 0.0869 -0.0266
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 500
+                  #mass 0.014
+                  #centerOfMass 0.06 0.0869 -0.0266
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -323,10 +335,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015 
               subdivision 24  
               physics Physics{
-                  # density 1e+03
-                  mass 0.014
-                  centerOfMass 0.055 0.0827 0.2985
-                  inertiaMatrix  [ 1 1 1, 0 0 0]
+                  density 500
+                  #mass 0.014
+                  #centerOfMass 0.055 0.0827 0.2985
+                  # inertiaMatrix  [ 1 1 1, 0 0 0]
                   damping Damping{
                     linear 0.2
                     angular 0.2
@@ -503,16 +515,16 @@ DEF STILL_WATER Fluid {
       DEF top Solid{
         name "top"
         physics Physics{
-            # density 1e+03
-            mass 0.28898
-            centerOfMass 0.055 0.238 0.1365
-            inertiaMatrix  [ 1 1 1, 0 0 0]
+            density 455.5
+            #mass 0.28898
+            #centerOfMass 0.055 0.238 0.1365
+            # inertiaMatrix  [ 1 1 1, 0 0 0]
             damping Damping{
               linear 0.2
               angular 0.2
             }
            }
-        boundingObject Transform{
+        boundingObject DEF topbound Transform{
              translation 0.06 0.23 0.136
              children[
              Box{
@@ -530,10 +542,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.007
-                centerOfMass -0.025 0.238 -0.068
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 520
+                #mass 0.007
+                #centerOfMass -0.025 0.238 -0.068
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -558,10 +570,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.007
-                centerOfMass -0.025 0.238 -0.068
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 500
+                #mass 0.007
+                #centerOfMass -0.025 0.238 -0.068
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -579,10 +591,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.007
-                centerOfMass -0.025 0.238 -0.068
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 500
+                #mass 0.007
+                #centerOfMass -0.025 0.238 -0.068
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -607,10 +619,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.007
-                centerOfMass 0.145 0.238 0.338
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 500
+                #mass 0.007
+                #centerOfMass 0.145 0.238 0.338
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -656,10 +668,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.0163
-                centerOfMass -0.12 0.238 0.14
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 500
+                #mass 0.0163
+                #centerOfMass -0.12 0.238 0.14
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -677,10 +689,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.0163
-                centerOfMass 0.24 0.238 0.14
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 500
+                #mass 0.0163
+                #centerOfMass 0.24 0.238 0.14
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -698,10 +710,10 @@ DEF STILL_WATER Fluid {
               thickness 0.0015
               subdivision 24  
               physics Physics{
-                # density 1e+03
-                mass 0.0231
-                centerOfMass 0.058 0.215 0.135
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 500
+                #mass 0.0231
+                #centerOfMass 0.058 0.215 0.135
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -714,9 +726,10 @@ DEF STILL_WATER Fluid {
           }
           DEF grapple Solid{
              physics Physics{
-                mass 0.001
-                centerOfMass -0.3407 10.799 -0.1136
-                inertiaMatrix  [ 1 1 1, 0 0 0]
+                density 670
+                # mass 0.001
+                # centerOfMass -0.3407 10.799 -0.1136
+                # inertiaMatrix  [ 1 1 1, 0 0 0]
                 damping Damping{
                   linear 0.2
                   angular 0.2
@@ -1065,7 +1078,7 @@ DEF STILL_WATER Fluid {
                  ]
                 }
               ]
-              boundingObject Group{
+              boundingObject DEF grapplebound Group{
                 children[
                   USE hook1
                   USE hook2
@@ -1088,8 +1101,11 @@ DEF STILL_WATER Fluid {
                     contactMaterial "default"
                     appearance Rubber {textureTransform NULL}
                     physics Physics {
-                      density 1e+03
-                      damping NULL
+                      density 200
+                      damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
                     }       
                     enableBoundingObject TRUE
                   }
@@ -1105,8 +1121,11 @@ DEF STILL_WATER Fluid {
                     contactMaterial "default"
                     appearance Rubber {textureTransform NULL}
                     physics Physics {
-                      density 1e+03
-                      damping NULL
+                      density 200
+                      damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
                     }       
                     enableBoundingObject TRUE
                   }
@@ -1122,8 +1141,11 @@ DEF STILL_WATER Fluid {
                     contactMaterial "default"
                     appearance Rubber {textureTransform NULL}
                     physics Physics {
-                      density 1e+03
-                      damping NULL
+                      density 200
+                      damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
                     }       
                     enableBoundingObject TRUE
                   }
@@ -1139,8 +1161,11 @@ DEF STILL_WATER Fluid {
                     contactMaterial "default"
                     appearance Rubber {textureTransform NULL}
                     physics Physics {
-                      density 1e+03
-                      damping NULL
+                      density 200
+                      damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
                     }      
                     enableBoundingObject TRUE
                   }
@@ -1155,8 +1180,11 @@ DEF STILL_WATER Fluid {
                     contactMaterial "default"
                     appearance Rubber {textureTransform NULL}
                     physics Physics {
-                      density 1e+03
-                      damping NULL
+                      density 200
+                      damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
                     }       
                     enableBoundingObject TRUE
                   }
@@ -1171,14 +1199,85 @@ DEF STILL_WATER Fluid {
                     contactMaterial "default"
                     appearance Rubber {textureTransform NULL}
                     physics Physics {
-                      density 1e+03
-                      damping NULL
+                      density 200
+                      damping Damping{
+                  linear 0.2
+                  angular 0.2
+                }
                     }               
                     enableBoundingObject TRUE
                   }
                  ]
                }
-               DEF motors Group{
+               DEF motors Solid{
+                 name "motors solid"
+                 physics Physics {
+                      density 550
+                      damping Damping{
+                        linear 0.2
+                        angular 0.2
+                      }
+                    } 
+                   boundingObject Group{
+                     children[
+                        DEF yawmot Transform{
+                         translation 0.239999 0.180002 0.124
+                         rotation -0.9999999984926382 -2.397449996386175e-09 5.490649991723604e-05 1.57074
+                         children[
+                           Cylinder{
+                             bottom TRUE
+                             height 0.07
+                             radius 0.038
+                             side TRUE
+                             top TRUE
+                             subdivision 36
+                           }
+                         ]
+                       }
+                       DEF swaymot Transform{
+                         translation 0.063 -0.060013 0.202999
+                         rotation -0.5773289350704162 0.5773289350704162 0.5773929350632185 2.09443
+                         children[
+                           Cylinder{
+                             bottom TRUE
+                             height 0.07
+                             radius 0.038
+                             side TRUE
+                             top TRUE
+                             subdivision 36
+                           }
+                         ]
+                       }
+                       DEF surgemot Transform{
+                         translation 0.02 -0.019999 0.13
+                         rotation 0.5773489358556708 0.5773509358554485 -0.5773509358554485 -2.094395307179586
+                         children[
+                           Cylinder{
+                             bottom TRUE
+                             height 0.07
+                             radius 0.038
+                             side TRUE
+                             top TRUE
+                             subdivision 36
+                           }
+                         ]
+                       }
+                       DEF heavemot Transform{
+                         translation 0.06 -0.039999 0.07
+                         rotation -1.73924e-06 1 -6.88391e-07 -1.570795307179586
+                         children[
+                           Cylinder{
+                             bottom TRUE
+                             height 0.07
+                             radius 0.038
+                             side TRUE
+                             top TRUE
+                             subdivision 36
+                           }
+                         ]
+                       }
+                     ]
+                   }                         
                  children[
                    DEF yaw Transform{
                      translation 0.24 0.180001 0.13
@@ -1193,7 +1292,7 @@ DEF STILL_WATER Fluid {
                                 height 0.05
                                 radius 0.02
                                 subdivision 24
-                                }
+                                }   
                            }
                            Transform{
                              translation 0 0.025 0
@@ -1225,9 +1324,25 @@ DEF STILL_WATER Fluid {
                         }
                       ]
                      }
-                     DEF surge Transform{
+                     DEF sway Transform{
                        translation 0.07 -0.059999 0.2
                        rotation 1.03407e-06 -2.39745e-09 1 1.5708
+                       scale 1 1 1
+                       children[
+                         USE motorshape
+                       ]
+                     }
+                     DEF surge Transform{
+                       translation 0.02 -0.019999 0.13
+                       rotation 0.5773489358556708 0.5773509358554485 -0.5773509358554485 -2.094395307179586
+                       scale 1 1 1
+                       children[
+                         USE motorshape
+                       ]
+                     }
+                     DEF heave Transform{
+                       translation 0.06 -0.039999 0.07
+                       rotation 0.70710628118604 6.106782428407177e-07 0.7071072811864377 -3.1415853071795863
                        scale 1 1 1
                        children[
                          USE motorshape
@@ -1237,7 +1352,7 @@ DEF STILL_WATER Fluid {
                    }
         
                DEF YAW Propeller {
-                          shaftAxis 0.24 0.021522 0.200092 # calculated from Online tools - vector rotation in 3D
+                          shaftAxis 0.25 0.021522 0.200092 # calculated from Online tools - vector rotation in 3D
                           centerOfThrust 0.24 0.18 0.09
                           thrustConstants  1 0 
                           torqueConstants 1 0 
@@ -1338,8 +1453,8 @@ DEF STILL_WATER Fluid {
                         }
                    }
                DEF Sway Propeller {
-                      shaftAxis 1 0 0
-                      centerOfThrust 0 0 0
+                      shaftAxis 0.03 -0.07 0.2
+                      centerOfThrust 0.03 -0.06 0.2
                       thrustConstants  1 0 
                       torqueConstants 1 0 
                       fastHelixThreshold 75.4   # [0, inf)
@@ -1348,22 +1463,98 @@ DEF STILL_WATER Fluid {
                           maxTorque 10                              # [0, inf)
                           sound     "sounds/rotational_motor.wav"   # any string
                         }
-                      fastHelix Transform{
-                        translation 0.03 -0.06 0.2
-                        rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
-                        children[
-                          USE FAST_HELIX
+                      fastHelix Solid{
+                         translation 0.03 -0.06 0.2
+                          rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                          scale 0.25 0.25 0.25
+                          children[
+                          USE FAST_MAIN_HELIX_SHAPE
                         ]
                       }
-                      slowHelix Transform{
+                      slowHelix Solid{
                         translation 0.03 -0.06 0.2
                         rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                        scale 0.25 0.25 0.25
                         children[
-                          USE SLOW_HELIX
+                          USE SLOW_MAIN_HELIX_TRANSFORM
+                        ]
+                      }
+                      
+                    }
+                    DEF Surge Propeller {
+                      shaftAxis 0.02 -0.02 0.09
+                      centerOfThrust 0.02 -0.02 0.09
+                      thrustConstants  1 0 
+                      torqueConstants 1 0 
+                      fastHelixThreshold 75.4   # [0, inf)
+                      device  RotationalMotor {
+                          name      "surge motor"              # any string
+                          maxTorque 10                              # [0, inf)
+                          sound     "sounds/rotational_motor.wav"   # any string
+                        }
+                      fastHelix Solid{
+                         translation 0.02 -0.02 0.09
+                          rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
+                          scale 0.25 0.25 0.25
+                          children[
+                          USE FAST_MAIN_HELIX_SHAPE
+                        ]
+                      }
+                      slowHelix Solid{
+                        translation 0.02 -0.02 0.09
+                        rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
+                        scale 0.25 0.25 0.25
+                        children[
+                          USE SLOW_MAIN_HELIX_TRANSFORM
+                        ]
+                      }
+                      
+                    }
+                    
+                    DEF Heave Propeller {
+                      shaftAxis 0.06 -0.08 0.07
+                      centerOfThrust 0.06 -0.08 0.07
+                      thrustConstants  1 0 
+                      torqueConstants 1 0 
+                      fastHelixThreshold 75.4   # [0, inf)
+                      device  RotationalMotor {
+                          name      "heave motor"              # any string
+                          maxTorque 10                              # [0, inf)
+                          sound     "sounds/rotational_motor.wav"   # any string
+                        }
+                      fastHelix Solid{
+                         translation 0.06 -0.08 0.07
+                          rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
+                          scale 0.25 0.25 0.25
+                          children[
+                          USE FAST_MAIN_HELIX_SHAPE
+                        ]
+                      }
+                      slowHelix Solid{
+                        translation 0.06 -0.08 0.07
+                        rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
+                        scale 0.25 0.25 0.25
+                        children[
+                          USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
                       }
                       
                     }
                  ]
-                   
+            boundingObject Group{
+              children[
+                USE bottombound
+                USE midsectionbound
+                USE topbound
+                USE hook1
+                USE hook2
+                USE hook3
+                USE hook4
+                USE yawmot
+                USE swaymot
+                USE heavemot
+                USE surgemot
+              ]
+            }  
+                           
           }
