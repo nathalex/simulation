@@ -7,4 +7,4 @@ centralWidgetVisible: 1
 selectionDisabled: 0
 viewpointLocked: 0
 orthographicViewHeight: 1
-textFiles: 0 "worlds/empty.wbt" "controllers/my_controller/my_controller.py"
+textFiles: 1 "worlds/empty.wbt" "controllers/my_controller/my_controller.py"
