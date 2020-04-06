@@ -29,7 +29,7 @@ DEF STILL_WATER Fluid {
       translation 0 0 0
       children[
        Box {
-              size 10 3.8 4 
+              size 10 3.8 4
             }]
             }
   children [
@@ -39,30 +39,30 @@ DEF STILL_WATER Fluid {
         transparency 0.8
         roughness 1.1102230246251565e-16
         metalness 0
-        
+
       }
-      
+
       geometry Box {
-          size 10 3.8 4 
+          size 10 3.8 4
         }
-      
+
       }
     ]
   }
-  
+
   DEF ROV Robot {
     name "ROV"
     translation 0 1 0
     controller "my_controller"
     immersionProperties ImmersionProperties {
       fluidName "fluid"
-      #referenceArea "immersed area" 
-      dragForceCoefficients              0.1 0 0  
-      dragTorqueCoefficients             0.001 0 0     
-      #viscousResistanceForceCoefficient  0          
+      #referenceArea "immersed area"
+      dragForceCoefficients              0.1 0 0
+      dragTorqueCoefficients             0.001 0 0
+      #viscousResistanceForceCoefficient  0
       viscousResistanceTorqueCoefficient 0.005
      }
-    
+
     physics Physics{
       density 500
       #mass 0.9749
@@ -72,7 +72,7 @@ DEF STILL_WATER Fluid {
         linear 0.2
         angular 0.2
       }
-    }             
+    }
     children[
     DEF bottom Solid{
           name "bottom"
@@ -102,7 +102,7 @@ DEF STILL_WATER Fluid {
                 height 0.035
                 radius 0.015
                 thickness 0.0015
-                subdivision 24    
+                subdivision 24
                 physics Physics{
                   density 520
                   #mass 0.0035
@@ -114,7 +114,7 @@ DEF STILL_WATER Fluid {
                     }
                 }
                 enableBoundingObject TRUE
-                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }        
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
               TJoint {
                  translation 0.06 -0.071 0.015
@@ -128,9 +128,9 @@ DEF STILL_WATER Fluid {
                 rotation 0 0 1 1.5708
                 name "pipe bottom 2"
                 height 0.035
-                radius 0.015 
+                radius 0.015
                 thickness 0.0015
-                subdivision 24  
+                subdivision 24
                 physics Physics{
                   density 520
                   #mass 0.0035
@@ -140,7 +140,7 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }  
+                }
                 enableBoundingObject TRUE
                 appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
@@ -161,9 +161,9 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }   
-                enableBoundingObject TRUE 
-                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+                }
+                enableBoundingObject TRUE
+                appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
               TJoint {
                  translation 0.055 -0.068 0.2583
@@ -177,9 +177,9 @@ DEF STILL_WATER Fluid {
                 rotation 0 0 1 1.5708
                 name "0.9191"
                 height 0.035
-                radius 0.015 
+                radius 0.015
                 thickness 0.0015
-                subdivision 24  
+                subdivision 24
                 physics Physics{
                   density 520
                   #mass 0.0035
@@ -189,7 +189,7 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }  
+                }
                 enableBoundingObject TRUE
                 appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
@@ -226,9 +226,9 @@ DEF STILL_WATER Fluid {
                 rotation 0.577 0.577 0.577 2.0944
                 name "pipe bottom 5"
                 height 0.15
-                radius 0.015 
+                radius 0.015
                 thickness 0.0015
-                subdivision 24  
+                subdivision 24
                 physics Physics{
                   density 520
                   #mass 0.010
@@ -238,7 +238,7 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }  
+                }
                 enableBoundingObject TRUE
                 appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
@@ -247,9 +247,9 @@ DEF STILL_WATER Fluid {
                 rotation 0.577 0.577 0.577 2.0944
                 name "pipe bottom 6"
                 height 0.15
-                radius 0.015 
+                radius 0.015
                 thickness 0.0015
-                subdivision 24  
+                subdivision 24
                 physics Physics{
                   density 520
                   #mass 0.010
@@ -259,8 +259,8 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }  
-                enableBoundingObject TRUE  
+                }
+                enableBoundingObject TRUE
                 appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
               SolidPipe {
@@ -268,9 +268,9 @@ DEF STILL_WATER Fluid {
                 rotation 0 0 -1 -1.571
                 name "pipe bottom 7"
                 height 0.25
-                radius 0.015 
+                radius 0.015
                 thickness 0.0015
-                subdivision 24  
+                subdivision 24
                 physics Physics{
                   density 520
                   #mass 0.010
@@ -281,7 +281,7 @@ DEF STILL_WATER Fluid {
                     angular 0.2
                     }
                 }
-                enableBoundingObject TRUE    
+                enableBoundingObject TRUE
                 appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
               }
              ]
@@ -312,9 +312,9 @@ DEF STILL_WATER Fluid {
               rotation 1 0 0 -0.262
               name "pipe mid 1"
               height 0.27
-              radius 0.015 
+              radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                   density 500
                   #mass 0.014
@@ -324,7 +324,7 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }    
+                }
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             SolidPipe {
@@ -333,8 +333,8 @@ DEF STILL_WATER Fluid {
               name "pipe mid 2"
               height 0.27
               radius 0.015
-              thickness 0.0015 
-              subdivision 24  
+              thickness 0.0015
+              subdivision 24
               physics Physics{
                   density 500
                   #mass 0.014
@@ -344,7 +344,7 @@ DEF STILL_WATER Fluid {
                     linear 0.2
                     angular 0.2
                     }
-                }     
+                }
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             DEF midpipe1 Transform{
@@ -405,7 +405,7 @@ DEF STILL_WATER Fluid {
                           1.5872693726937259 1.4316113161131547 0
                           1.5288437884378835 1.0552275522755174 0
                           1.3990774907749069 0.6920664206642023 0
-                          
+
                         ]
                         scale [ #uniform for each segment
                           0.15 0.15
@@ -487,7 +487,7 @@ DEF STILL_WATER Fluid {
                           1.5872693726937259 1.4316113161131547 0
                           1.5288437884378835 1.0552275522755174 0
                           1.3990774907749069 0.6920664206642023 0
-                          
+
                         ]
                         scale [ #uniform for each segment
                           0.15 0.15
@@ -516,7 +516,7 @@ DEF STILL_WATER Fluid {
       DEF top Solid{
         name "top"
         physics Physics{
-            density 455.7
+            density 452
             #mass 0.28898
             #centerOfMass 0.055 0.238 0.1365
             # inertiaMatrix  [ 1 1 1, 0 0 0]
@@ -541,7 +541,7 @@ DEF STILL_WATER Fluid {
               height 0.1045
               radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 520
                 #mass 0.007
@@ -552,8 +552,8 @@ DEF STILL_WATER Fluid {
                   angular 0.2
                 }
                }
-              enableBoundingObject TRUE  
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+              enableBoundingObject TRUE
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             TJoint {
                translation 0.06 0.2284 -0.0652
@@ -567,9 +567,9 @@ DEF STILL_WATER Fluid {
               rotation 0 0 1 1.5708
               name "pipe top 2"
               height 0.1045
-              radius 0.015 
+              radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 500
                 #mass 0.007
@@ -580,7 +580,7 @@ DEF STILL_WATER Fluid {
                   angular 0.2
                 }
                }
-              enableBoundingObject TRUE   
+              enableBoundingObject TRUE
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             SolidPipe {
@@ -590,7 +590,7 @@ DEF STILL_WATER Fluid {
               height 0.1045
               radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 500
                 #mass 0.007
@@ -600,9 +600,9 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-               }   
+               }
               enableBoundingObject TRUE
-              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }            
+              appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             TJoint {
                translation 0.055 0.2284 0.3359
@@ -616,9 +616,9 @@ DEF STILL_WATER Fluid {
               rotation 0 0 1 1.5708
               name "pipe top 4"
               height 0.1045
-              radius 0.015 
+              radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 500
                 #mass 0.007
@@ -629,7 +629,7 @@ DEF STILL_WATER Fluid {
                   angular 0.2
                 }
                }
-              enableBoundingObject TRUE   
+              enableBoundingObject TRUE
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             LJoint{
@@ -665,9 +665,9 @@ DEF STILL_WATER Fluid {
               rotation 0.577 0.577 0.577 2.0944
               name "pipe top 5"
               height 0.3
-              radius 0.015 
+              radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 500
                 #mass 0.0163
@@ -677,8 +677,8 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-               }   
-              enableBoundingObject TRUE 
+               }
+              enableBoundingObject TRUE
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             SolidPipe {
@@ -686,9 +686,9 @@ DEF STILL_WATER Fluid {
               rotation 0.577 0.577 0.577 2.0944
               name "pipe top 6"
               height 0.3
-              radius 0.015 
+              radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 500
                 #mass 0.0163
@@ -698,8 +698,8 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-               }  
-              enableBoundingObject TRUE   
+               }
+              enableBoundingObject TRUE
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
             SolidPipe {
@@ -707,9 +707,9 @@ DEF STILL_WATER Fluid {
               rotation 0 0 -1 -1.571
               name "pipe top 7"
               height 0.4
-              radius 0.015 
+              radius 0.015
               thickness 0.0015
-              subdivision 24  
+              subdivision 24
               physics Physics{
                 density 500
                 #mass 0.0231
@@ -719,8 +719,8 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-               } 
-              enableBoundingObject TRUE   
+               }
+              enableBoundingObject TRUE
               appearance CorrugatedPvc { textureTransform TextureTransform { scale 1 1.5 } }
             }
            ]
@@ -799,7 +799,7 @@ DEF STILL_WATER Fluid {
                         7.794117647058823 4.172958735733104 0
                         7.617647058823529 4.4960491659350375 0
                         7.264705882352942 4.888498683055319 0
-    
+
                       ]
                       scale [ #uniform for each segment
                         0.1 0.1
@@ -884,7 +884,7 @@ DEF STILL_WATER Fluid {
                         7.794117647058823 4.172958735733104 0
                         7.617647058823529 4.4960491659350375 0
                         7.264705882352942 4.888498683055319 0
-    
+
                       ]
                       scale [ #uniform for each segment
                         0.1 0.1
@@ -969,7 +969,7 @@ DEF STILL_WATER Fluid {
                         7.794117647058823 4.172958735733104 0
                         7.617647058823529 4.4960491659350375 0
                         7.264705882352942 4.888498683055319 0
-    
+
                       ]
                       scale [ #uniform for each segment
                         0.1 0.1
@@ -1054,7 +1054,7 @@ DEF STILL_WATER Fluid {
                         7.794117647058823 4.172958735733104 0
                         7.617647058823529 4.4960491659350375 0
                         7.264705882352942 4.888498683055319 0
-    
+
                       ]
                       scale [ #uniform for each segment
                         0.1 0.1
@@ -1104,10 +1104,10 @@ DEF STILL_WATER Fluid {
                     physics Physics {
                       density 200
                       damping Damping{
-                  linear 0.2
-                  angular 0.2
-                }
-                    }       
+                        linear 0.2
+                        angular 0.2
+                      }
+                    }
                     enableBoundingObject TRUE
                   }
                   SolidPipe{
@@ -1127,7 +1127,7 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-                    }       
+                    }
                     enableBoundingObject TRUE
                   }
                   SolidPipe{
@@ -1147,7 +1147,7 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-                    }       
+                    }
                     enableBoundingObject TRUE
                   }
                   SolidPipe{
@@ -1167,7 +1167,7 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-                    }      
+                    }
                     enableBoundingObject TRUE
                   }
                   SolidRoundedBox{
@@ -1186,7 +1186,7 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-                    }       
+                    }
                     enableBoundingObject TRUE
                   }
                   SolidRoundedBox{
@@ -1205,10 +1205,387 @@ DEF STILL_WATER Fluid {
                   linear 0.2
                   angular 0.2
                 }
-                    }               
+                    }
                     enableBoundingObject TRUE
                   }
                  ]
+               }
+               DEF cables Solid{
+                 name "cables"
+                 physics Physics {
+                      density 400
+                      damping Damping{
+                        linear 0.2
+                        angular 0.2
+                      }
+                    }
+                    children[
+                    DEF cablemain Transform{
+                    translation -0.749844 -0.82735 0.6515
+                    rotation 0.56605114850184 -0.5721841501108149 0.5934571556917249 -0.5337353071795858
+                    scale 0.1 0.1 0.1
+                    children[
+                      Shape{
+                        appearance GlossyPaint {
+                          baseColor 1 1 1
+                          textureTransform NULL
+                          }
+                        geometry Extrusion {
+                          crossSection [ #this is a circle, using trig
+                            -1 0
+                            -0.866 0.5
+                            -0.707 0.707
+                            -0.5 0.866
+                            0 1
+                            0.5 0.866
+                            0.707 0.707
+                            0.866 0.5
+                            1 0
+                            0.866 -0.5
+                            0.707 -0.707
+                            0.5 -0.866
+                            0 -1
+                            -0.5 -0.866
+                            -0.707 -0.707
+                            -0.866 -0.5
+                            -1 0
+                          ]
+                          spine [ #coordinates from hook photo through apps.automeris.io
+                            2.85374149659864 3.530612244897963 0
+                            2.4557823129251704 3.755102040816329 0
+                            2.1271258503401365 4.061224489795922 0
+                            1.8312074829931975 4.510204081632656 0
+                            1.5990646258503403 5.224489795918371 0
+                            1.5803571428571432 6.000000000000005 0
+                            1.6245748299319733 6.530612244897965 0
+                            1.7117346938775515 7.326530612244904 0
+                            1.7121598639455788 8.08163265306123 0
+                            1.6726190476190481 8.857142857142863 0
+                            1.7912414965986398 9.530612244897966 0
+                            1.9234693877551026 10.367346938775519 0
+                            2.055272108843538 11.448979591836743 0
+                            2.4234693877551026 12.367346938775519 0
+                            2.691751700680273 12.83673469387756 0
+                            3.0454931972789123 13.081632653061234 0
+                            3.395833333333334 13.28571428571429  0
+                            3.8681972789115653 13.204081632653072 0
+                            4.321428571428572 13.142857142857153 0
+                            4.740221088435375 12.918367346938785 0
+                            4.997448979591837 12.755102040816336 0
+                            5.197278911564626 12.653061224489804 0
+                         ]
+                          scale [ #uniform for each segment
+                            0.05 0.05
+                            0.05 0.05
+                            0.05 0.05
+                            0.05 0.05
+                            0.05 0.05
+                            0.05 0.05
+                            0.05 0.05
+                          ]
+                          beginCap TRUE
+                          endCap TRUE
+                          ccw TRUE
+                          solid TRUE
+                          convex TRUE
+                          creaseAngle 0.0
+                          splineSubdivision 16
+                          }
+                        castShadows TRUE
+                        isPickable TRUE
+                      }
+                     ]
+                    }
+
+                    SolidRoundedBox{
+                        translation -0.389954 -0.61862 0.455783
+                        rotation -0.31219708281512626 0.7536961999296258 -0.5783381534131797 2.67134
+                        name "ethernet female"
+                        size 0.04 0.03 0.05
+                        borderRadius 0.005
+                        subdivision 24
+                        # accuracy 0.0000001
+                        contactMaterial "default"
+                        appearance GlossyPaint {
+                          baseColor 1 1 1
+                          textureTransform NULL
+                          }
+                        physics Physics {
+                          density 500
+                          damping Damping{
+                          linear 0.2
+                          angular 0.2
+                        }
+                        }
+                        enableBoundingObject TRUE
+                      }
+
+                   DEF heavecable Transform{
+                    translation 0.17473 -0.0331564 0.0380049
+                    rotation -0.10971396951147952 0.9901247248532882 0.08726897574874042 -2.9252753071795863
+                    scale 0.07 0.09 0.08
+                    children[
+                      Shape{
+                        appearance Copper {
+                          textureTransform NULL
+                          }
+                        geometry Extrusion {
+                          crossSection [ #this is a circle, using trig
+                            -1 0
+                            -0.866 0.5
+                            -0.707 0.707
+                            -0.5 0.866
+                            0 1
+                            0.5 0.866
+                            0.707 0.707
+                            0.866 0.5
+                            1 0
+                            0.866 -0.5
+                            0.707 -0.707
+                            0.5 -0.866
+                            0 -1
+                            -0.5 -0.866
+                            -0.707 -0.707
+                            -0.866 -0.5
+                            -1 0
+                          ]
+                          spine [ #coordinates from hook photo through apps.automeris.io
+                            1.74915 2.77551 0.1
+                            1.36267 2.38776 -0.05
+                            1.1522108843537415 1.6122448979591866 0
+                            1.285289115646258 0.9591836734693899 0
+                            1.5204081632653061 0.5306122448979593 0
+
+                         ]
+                          scale [ #uniform for each segment
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                          ]
+                          beginCap TRUE
+                          endCap TRUE
+                          ccw TRUE
+                          solid TRUE
+                          convex TRUE
+                          creaseAngle 0.0
+                          splineSubdivision 16
+                          }
+                        castShadows TRUE
+                        isPickable TRUE
+                      }
+                     ]
+                    }
+                    DEF yawcable Transform{
+                    translation 0.229666 0.143346 0.264822
+                    rotation 0.04927627098272312 0.8338985089428758 -0.5497136762905628 2.42533
+                    scale 0.109 0.1 0.1
+                    children[
+                      Shape{
+                        appearance Copper {
+                          textureTransform NULL
+                          }
+                        geometry Extrusion {
+                          crossSection [ #this is a circle, using trig
+                            -1 0
+                            -0.866 0.5
+                            -0.707 0.707
+                            -0.5 0.866
+                            0 1
+                            0.5 0.866
+                            0.707 0.707
+                            0.866 0.5
+                            1 0
+                            0.866 -0.5
+                            0.707 -0.707
+                            0.5 -0.866
+                            0 -1
+                            -0.5 -0.866
+                            -0.707 -0.707
+                            -0.866 -0.5
+                            -1 0
+                          ]
+                          spine [ #coordinates from hook photo through apps.automeris.io
+                            0.41496598639455784 1.2653061224489797 0
+                            0.37202380952380976 1 0
+                            0.3622448979591837 0.6326530612244916 0
+                            0.4268707482993199 0.408163265306122 0
+                            0.8295068027210886 0.48979591836734926 0
+                            1.1122448979591837 0.6326530612244916 0
+                            1.5493197278911564 0.8775510204081662 0
+                            1.9485544217687074 0.9183673469387763 0
+                            2.14 0.55 0.3
+                            2.23 0.42 -0.8
+
+                         ]
+                          scale [ #uniform for each segment
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                          ]
+                          beginCap TRUE
+                          endCap TRUE
+                          ccw TRUE
+                          solid TRUE
+                          convex TRUE
+                          creaseAngle 0.0
+                          splineSubdivision 16
+                          }
+                        castShadows TRUE
+                        isPickable TRUE
+                      }
+                     ]
+                    }
+                    DEF surgecable Transform{
+                    translation 0.210065 -0.0813378 0.223566
+                    rotation -0.31271392822700195 0.4449688978723077 0.839173807395787 1.92529
+                    scale 0.109 0.1 0.1
+                    children[
+                      Shape{
+                        appearance Copper {
+                          textureTransform NULL
+                          }
+                        geometry Extrusion {
+                          crossSection [ #this is a circle, using trig
+                            -1 0
+                            -0.866 0.5
+                            -0.707 0.707
+                            -0.5 0.866
+                            0 1
+                            0.5 0.866
+                            0.707 0.707
+                            0.866 0.5
+                            1 0
+                            0.866 -0.5
+                            0.707 -0.707
+                            0.5 -0.866
+                            0 -1
+                            -0.5 -0.866
+                            -0.707 -0.707
+                            -0.866 -0.5
+                            -1 0
+                          ]
+                          spine [ #coordinates from hook photo through apps.automeris.io
+                            0.5055272108843538 1.1020408163265323 0
+                            0.49022108843537415 0.9183673469387763 0
+                            0.5063775510204082 0.612244897959183 0
+                            0.8137755102040819 0.5510204081632679 0
+                            1.4260204081632655 0.8979591836734713 0
+                            2 0.5 0
+                            2.5 1.25 1
+                             ]
+                          scale [ #uniform for each segment
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                            0.005 0.005
+                          ]
+                          beginCap TRUE
+                          endCap TRUE
+                          ccw TRUE
+                          solid TRUE
+                          convex TRUE
+                          creaseAngle 0.0
+                          splineSubdivision 16
+                          }
+                        castShadows TRUE
+                        isPickable TRUE
+                      }
+                     ]
+                     }
+                     DEF swaycable Transform{
+                    translation 0.0350077 -0.051338 0.0821454
+                      rotation 0 1 0 -1.8325953071795862
+                    scale 0.02 0.05 0.05
+                    children[
+                      Shape{
+                        appearance Copper {
+                          textureTransform NULL
+                          }
+                        geometry Extrusion {
+                          crossSection [ #this is a circle, using trig
+                            -1 0
+                            -0.866 0.5
+                            -0.707 0.707
+                            -0.5 0.866
+                            0 1
+                            0.5 0.866
+                            0.707 0.707
+                            0.866 0.5
+                            1 0
+                            0.866 -0.5
+                            0.707 -0.707
+                            0.5 -0.866
+                            0 -1
+                            -0.5 -0.866
+                            -0.707 -0.707
+                            -0.866 -0.5
+                            -1 0
+                          ]
+                          spine [ #coordinates from hook photo through apps.automeris.io
+                           1 4.2 -0.1
+                           0.8 3.6 -0.4
+                           1.33588 3.4 0
+                           1.786139455782313 3.4693877551020442 0
+                           2.5522959183673475 3.1632653061224527 0
+                           3.0318877551020407 2.918367346938778 0
+                           3.9515306122448983 2.204081632653063 0
+                           4.120748299319728 1.7346938775510221 0
+                           4.246173469387755 1.4897959183673493 0
+                           4.250425170068027 1.0408163265306136 0
+                           3.9732142857142856 0.7142857142857153 0
+                           3.6679421768707483 0.5510204081632679 0
+                             ]
+                          scale [ #uniform for each segment
+                            0.01 0.01
+                            0.01 0.01
+                            0.01 0.01
+                            0.01 0.01
+                            0.01 0.01
+                            0.01 0.01
+                            0.01 0.01
+                          ]
+                          beginCap TRUE
+                          endCap TRUE
+                          ccw TRUE
+                          solid TRUE
+                          convex TRUE
+                          creaseAngle 0.0
+                          splineSubdivision 16
+                          }
+                        castShadows TRUE
+                        isPickable TRUE
+                      }
+                     ]
+                     }
+                    ]
+
+                    boundingObject Group{
+                      children[
+                        USE cablemain
+                        DEF ethernet Transform{
+                            translation -0.389954 -0.61862 0.455783
+                            rotation -0.31219708281512626 0.7536961999296258 -0.5783381534131797 2.67134
+                            children[
+                              Box{size 0.04 0.03 0.05}
+                            ]
+                            }
+                        USE heavecable
+                        USE yawcable
+                        #USE surgecable
+                      ]
+                    }
+
                }
                DEF motors Solid{
                  name "motors solid"
@@ -1218,7 +1595,7 @@ DEF STILL_WATER Fluid {
                         linear 0.2
                         angular 0.2
                       }
-                    } 
+                    }
                    boundingObject Group{
                      children[
                         DEF yawmot Transform{
@@ -1278,7 +1655,7 @@ DEF STILL_WATER Fluid {
                          ]
                        }
                      ]
-                   }                         
+                   }
                  children[
                    DEF yaw Transform{
                      translation 0.24 0.180001 0.13
@@ -1293,7 +1670,7 @@ DEF STILL_WATER Fluid {
                                 height 0.05
                                 radius 0.02
                                 subdivision 24
-                                }   
+                                }
                            }
                            Transform{
                              translation 0 0.025 0
@@ -1320,7 +1697,7 @@ DEF STILL_WATER Fluid {
                                     }
                                  }
                                ]
-                             }    
+                             }
                            ]
                         }
                       ]
@@ -1351,12 +1728,12 @@ DEF STILL_WATER Fluid {
                      }
                     ]
                    }
-        
+
                DEF YAW Propeller {
                           shaftAxis 0 0 1
                           centerOfThrust 0.24 0.18 0.09
-                          thrustConstants  1 0 
-                          torqueConstants 1 0 
+                          thrustConstants  1 0
+                          torqueConstants 1 0
                           fastHelixThreshold 1.5   # [0, inf)
                           device  RotationalMotor {
                               name      "yaw motor"              # any string
@@ -1399,67 +1776,130 @@ DEF STILL_WATER Fluid {
                             scale 0.18 0.18 0.18
                             children [
                               DEF SLOW_MAIN_HELIX_TRANSFORM Transform {
-                                #rotation 1 1 0 1.5708
+                                scale 1.5 1.5 1.5
+
                                 children [
                                   DEF SLOW_MAIN_HELIX_GROUP Group {
                                     children [
+                                      DEF TIP Transform{
+                                      rotation 0 0 1 1.5708
+                                      scale 2 2 2
+                                      children[
                                       Shape {
                                         appearance Rubber {textureTransform NULL}
                                         geometry Capsule {
                                           height 0.02
                                           radius 0.01
-                                        }
+                                        }}]
                                       }
+                                      DEF INSERT Transform{
+                                      translation -0.0299985 0.000299885 0
+                                      rotation 0 0 1 1.5608
+                                      scale 5 1 5
+                                      children[
                                       Shape {
                                         appearance Rubber {textureTransform NULL}
                                         geometry Cylinder {
                                           height 0.07
                                           radius 0.004
                                         }
-                                      }
-                                      DEF RIGHT_BLADE Transform {
-                                        translation 0 0.09 0
+                                      }]}
+                                      DEF BLADE1 Transform {
+                                        translation -0.01 0.04 0
+                                        rotation 0 1 0 -0.523595307179586
                                         children [
                                           DEF BLADE_SHAPE Shape {
-                                            appearance PBRAppearance {
-                                              baseColor 0.8 0.8 0.8
-                                              roughness 1
-                                              metalness 0
-                                            }
+                                            appearance Rubber {textureTransform NULL}
                                             geometry Box {
-                                              size 0.01 0.11 0.004
+                                              size 0.06 0.06 0.004
                                             }
                                           }
                                         ]
                                       }
-                                      DEF RIGHT_BLADE Transform {
-                                        translation 0 -0.09 0
-                                        rotation 0 1 0 -0.3618
+                                      DEF BLADE2 Transform {
+                                        translation -0.0101704 -0.0149471 0.0262451
+                                        rotation 0.8814118335171858 -0.4562539138218564 0.12225197690880428 -1.1598053071795862
                                         children [
                                           DEF BLADE_SHAPE Shape {
-                                            appearance PBRAppearance {
-                                              baseColor 0.8 0.8 0.8
-                                              roughness 1
-                                              metalness 0
-                                            }
+                                            appearance Rubber {textureTransform NULL}
                                             geometry Box {
-                                              size 0.01 0.11 0.004
+                                              size 0.06 0.06 0.004
                                             }
+                                          }
+                                        ]
+                                      }
+                                      DEF BLADE3 Transform {
+                                        translation -0.0134898 -0.0150793 -0.0288338
+                                        rotation 0.8814127531683258 0.4562518722307874 0.12225296576416202 1.1598
+                                        children [
+                                          DEF BLADE_SHAPE Shape {
+                                            appearance Rubber {textureTransform NULL}
+                                            geometry Box {
+                                              size 0.06 0.06 0.004
+                                            }
+                                          }
+                                        ]
+                                      }
+                                      DEF BLADETIP1 Transform{
+                                        translation -0.01 0.07 0
+                                        rotation -0.9351138487168261 -0.25056095946412593 -0.2505619594639642 1.63783
+                                        scale 1 1 1
+                                        children[
+                                          DEF tip Shape{
+                                              appearance Rubber {textureTransform NULL}
+                                              geometry Cylinder {
+                                                height 0.004
+                                                radius 0.03
+                                                side TRUE
+                                                subdivision 24
+                                              }
+                                            }
+                                           ]
+                                          }
+                                      DEF BLADETIP2 Transform{
+                                        translation -0.00628804 -0.0306827 0.0514904
+                                        rotation 0.6947409354408542 0.35963096658111415 -0.6228969421169929 0.736199
+                                        scale 1 1 1
+                                        children[
+                                          DEF tip Shape{
+                                              appearance Rubber {textureTransform NULL}
+                                              geometry Cylinder {
+                                                height 0.004
+                                                radius 0.03
+                                                side TRUE
+                                                subdivision 24
+                                              }
+                                            }
+                                           ]
+                                          }
+                                      DEF BLADETIP3 Transform{
+                                        translation -0.0173721 -0.0308149 -0.0540791
+                                        rotation 00.9636116709319705 0.23149392094611274 -0.13365295435825897 2.63623
+                                        scale 1 1 1
+                                        children[
+                                          DEF tip Shape{
+                                              appearance Rubber {textureTransform NULL}
+                                              geometry Cylinder {
+                                                height 0.004
+                                                radius 0.03
+                                                side TRUE
+                                                subdivision 24
+                                              }
+                                            }
+                                           ]
                                           }
                                         ]
                                       }
                                     ]
                                   }
-                                ]
-                              }
                            ]
                         }
                    }
                DEF Sway Propeller {
-                      shaftAxis 0 0 1
+                      shaftAxis 1 0 0
                       centerOfThrust 0.03 -0.06 0.2
-                      thrustConstants  1 0 
-                      torqueConstants 1 0 
+                      thrustConstants  1 0
+                      torqueConstants 1 0
                       fastHelixThreshold 1.5   # [0, inf)
                       device  RotationalMotor {
                           name      "sway motor"              # any string
@@ -1477,7 +1917,7 @@ DEF STILL_WATER Fluid {
                         ]
                       }
                       slowHelix Solid{
-                        rotation 0 1 0 1.5708
+                        rotation 0 1 0 -3.14159
                         translation 0.03 -0.06 0.2
                         # rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
                         scale 0.18 0.18 0.18
@@ -1485,13 +1925,13 @@ DEF STILL_WATER Fluid {
                           USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
                       }
-                      
+
                     }
                     DEF Surge Propeller {
-                      shaftAxis 1 0 0
+                      shaftAxis 0 0 1
                       centerOfThrust 0.02 -0.02 0.09
-                      thrustConstants  1 0 
-                      torqueConstants 1 0 
+                      thrustConstants  1 0
+                      torqueConstants 1 0
                       fastHelixThreshold 1.5   # [0, inf)
                       device  RotationalMotor {
                           name      "surge motor"              # any string
@@ -1510,21 +1950,21 @@ DEF STILL_WATER Fluid {
                       }
                       slowHelix Solid{
                         translation 0.02 -0.02 0.09
-                        rotation 0 0 1 1.5708
+                        rotation 0 1 0 1.5708
                         #rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
                         scale 0.18 0.18 0.18
                         children[
                           USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
                       }
-                      
+
                     }
-                    
+
                     DEF Heave Propeller {
                       shaftAxis 0 1 0
                       centerOfThrust 0.06 -0.08 0.07
-                      thrustConstants  1 0 
-                      torqueConstants 1 0 
+                      thrustConstants  1 0
+                      torqueConstants 1 0
                       fastHelixThreshold 1.5   # [0, inf)
                       device  RotationalMotor {
                           name      "heave motor"              # any string
@@ -1543,14 +1983,14 @@ DEF STILL_WATER Fluid {
                       }
                       slowHelix Solid{
                         translation 0.06 -0.08 0.07
-                        rotation 1 0 0 1.5708
+                        rotation 0 0 -1 1.5708
                         # rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
                         scale 0.18 0.18 0.18
                         children[
                           USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
                       }
-                      
+
                     }
                  ]
             boundingObject Group{
@@ -1562,11 +2002,16 @@ DEF STILL_WATER Fluid {
                 USE hook2
                 USE hook3
                 USE hook4
+                USE cablemain
+                USE ethernet
+                USE heavecable
+                USE yawcable
+                #USE surgecable
                 USE yawmot
                 USE swaymot
                 USE heavemot
                 USE surgemot
               ]
-            }  
-                           
+            }
+
           }
