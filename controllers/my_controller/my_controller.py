@@ -59,28 +59,28 @@ while robot.step(timestep) != -1:
     key = keyboard.getKey()
     if (key==Keyboard.UP):
       yawVel += 0.25
-      print 'Yaw + 0.05. Total Yaw velocity:' + str(yawVel)
+      print('Yaw + 0.05. Total Yaw velocity:' + str(yawVel))
     if (key==Keyboard.DOWN):
       yawVel -= 0.25
-      print 'Yaw - 0.05. Total Yaw velocity:' + str(yawVel)
+      print('Yaw - 0.05. Total Yaw velocity:' + str(yawVel))
     if (key==Keyboard.LEFT):
       swayVel += 0.25
-      print 'Sway + 0.05. Total Sway velocity:' + str(swayVel)
+      print('Sway + 0.05. Total Sway velocity:' + str(swayVel))
     if (key==Keyboard.RIGHT):
       swayVel -= 0.25      
-      print 'Sway - 0.05. Total Sway velocity:' + str(swayVel)
+      print('Sway - 0.05. Total Sway velocity:' + str(swayVel))
     if (key==ord('A')):
       surgeVel += 0.25
-      print 'Surge + 0.05. Total Surge velocity:' + str(surgeVel)
+      print('Surge + 0.05. Total Surge velocity:' + str(surgeVel))
     if (key==ord('D')):
       surgeVel -= 0.25
-      print 'Surge - 0.05. Total Surge velocity:' + str(surgeVel)
+      print('Surge - 0.05. Total Surge velocity:' + str(surgeVel))
     if (key==ord('W')):
       heaveVel += 0.25
-      print 'Heave + 0.05. Total Heave velocity:' + str(heaveVel)
+      print('Heave + 0.05. Total Heave velocity:' + str(heaveVel))
     if (key==ord('S')):
       heaveVel -= 0.25
-      print 'Heave - 0.05. Total Heave velocity:' + str(heaveVel)
+      print('Heave - 0.05. Total Heave velocity:' + str(heaveVel))
        
     # Read the sensors:
     # Enter here functions to read sensor data, like:
