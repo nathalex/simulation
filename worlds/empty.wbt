@@ -1,5 +1,6 @@
 #VRML_SIM R2020a utf8
 WorldInfo {
+  basicTimeStep 16
 }
 Viewpoint {
   fieldOfView 0.785398
@@ -515,7 +516,7 @@ DEF STILL_WATER Fluid {
       DEF top Solid{
         name "top"
         physics Physics{
-            density 455.5
+            density 455.7
             #mass 0.28898
             #centerOfMass 0.055 0.238 0.1365
             # inertiaMatrix  [ 1 1 1, 0 0 0]
@@ -1352,27 +1353,29 @@ DEF STILL_WATER Fluid {
                    }
         
                DEF YAW Propeller {
-                          shaftAxis 0.25 0.021522 0.200092 # calculated from Online tools - vector rotation in 3D
+                          shaftAxis 0 0 1
                           centerOfThrust 0.24 0.18 0.09
                           thrustConstants  1 0 
                           torqueConstants 1 0 
-                          fastHelixThreshold 75.4   # [0, inf)
+                          fastHelixThreshold 1.5   # [0, inf)
                           device  RotationalMotor {
                               name      "yaw motor"              # any string
-                              maxTorque 10                              # [0, inf)
+                              maxTorque 1                              # [0, inf)
                               sound     "sounds/rotational_motor.wav"   # any string
+                              maxVelocity 30
                             }
                           fastHelix DEF FAST_HELIX Solid {
                           name "fast helix"
                             translation 0.24 0.18 0.09
-                            rotation 1 0 0 -1.5707953071795862
-                            scale 0.25 0.25 0.25
+                            # rotation 1 0 0 -1.5707953071795862
+                            rotation 1 0 0 1.5708
+                            scale 0.18 0.18 0.18
                             children [
                               DEF FAST_MAIN_HELIX_SHAPE Shape {
                                 appearance DEF FAST_HELIX_APPEARANCE PBRAppearance {
                                   baseColorMap ImageTexture {
                                     url [
-                                      "textures/blurred_helix.png"
+                                      "../textures/blurred_helix.png"
                                     ]
                                   }
                                   transparency 0.5
@@ -1391,11 +1394,12 @@ DEF STILL_WATER Fluid {
                           slowHelix DEF SLOW_HELIX Solid {
                           name "slow helix"
                             translation 0.24 0.18 0.09
-                            rotation 1 0 0 1.5708
-                            scale 0.25 0.25 0.25
+                            # rotation 1 0 0 1.5708
+                            rotation 0 1 0 1.5708
+                            scale 0.18 0.18 0.18
                             children [
                               DEF SLOW_MAIN_HELIX_TRANSFORM Transform {
-                                rotation 1 0 0 1.5708
+                                #rotation 1 1 0 1.5708
                                 children [
                                   DEF SLOW_MAIN_HELIX_GROUP Group {
                                     children [
@@ -1415,7 +1419,6 @@ DEF STILL_WATER Fluid {
                                       }
                                       DEF RIGHT_BLADE Transform {
                                         translation 0 0.09 0
-                                        rotation 0 1 0 0.3618
                                         children [
                                           DEF BLADE_SHAPE Shape {
                                             appearance PBRAppearance {
@@ -1453,28 +1456,31 @@ DEF STILL_WATER Fluid {
                         }
                    }
                DEF Sway Propeller {
-                      shaftAxis 0.03 -0.07 0.2
+                      shaftAxis 0 0 1
                       centerOfThrust 0.03 -0.06 0.2
                       thrustConstants  1 0 
                       torqueConstants 1 0 
-                      fastHelixThreshold 75.4   # [0, inf)
+                      fastHelixThreshold 1.5   # [0, inf)
                       device  RotationalMotor {
                           name      "sway motor"              # any string
-                          maxTorque 10                              # [0, inf)
+                          maxTorque 1                              # [0, inf)
                           sound     "sounds/rotational_motor.wav"   # any string
+                          maxVelocity 30
                         }
                       fastHelix Solid{
                          translation 0.03 -0.06 0.2
-                          rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
-                          scale 0.25 0.25 0.25
+                         rotation 0 0 1 1.5708
+                          # rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                          scale 0.18 0.18 0.18
                           children[
                           USE FAST_MAIN_HELIX_SHAPE
                         ]
                       }
                       slowHelix Solid{
+                        rotation 0 1 0 1.5708
                         translation 0.03 -0.06 0.2
-                        rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
-                        scale 0.25 0.25 0.25
+                        # rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
+                        scale 0.18 0.18 0.18
                         children[
                           USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
@@ -1482,28 +1488,31 @@ DEF STILL_WATER Fluid {
                       
                     }
                     DEF Surge Propeller {
-                      shaftAxis 0.02 -0.02 0.09
+                      shaftAxis 1 0 0
                       centerOfThrust 0.02 -0.02 0.09
                       thrustConstants  1 0 
                       torqueConstants 1 0 
-                      fastHelixThreshold 75.4   # [0, inf)
+                      fastHelixThreshold 1.5   # [0, inf)
                       device  RotationalMotor {
                           name      "surge motor"              # any string
-                          maxTorque 10                              # [0, inf)
+                          maxTorque 1                              # [0, inf)
                           sound     "sounds/rotational_motor.wav"   # any string
+                          maxVelocity 30
                         }
                       fastHelix Solid{
                          translation 0.02 -0.02 0.09
-                          rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
-                          scale 0.25 0.25 0.25
+                         rotation 1 0 0 1.5708
+                          #rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
+                          scale 0.18 0.18 0.18
                           children[
                           USE FAST_MAIN_HELIX_SHAPE
                         ]
                       }
                       slowHelix Solid{
                         translation 0.02 -0.02 0.09
-                        rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
-                        scale 0.25 0.25 0.25
+                        rotation 0 0 1 1.5708
+                        #rotation -1.6952506741258884e-09 0.70710528118436 0.707108281185553 3.14159
+                        scale 0.18 0.18 0.18
                         children[
                           USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
@@ -1512,28 +1521,31 @@ DEF STILL_WATER Fluid {
                     }
                     
                     DEF Heave Propeller {
-                      shaftAxis 0.06 -0.08 0.07
+                      shaftAxis 0 1 0
                       centerOfThrust 0.06 -0.08 0.07
                       thrustConstants  1 0 
                       torqueConstants 1 0 
-                      fastHelixThreshold 75.4   # [0, inf)
+                      fastHelixThreshold 1.5   # [0, inf)
                       device  RotationalMotor {
                           name      "heave motor"              # any string
-                          maxTorque 10                              # [0, inf)
+                          maxTorque 1                              # [0, inf)
                           sound     "sounds/rotational_motor.wav"   # any string
+                          maxVelocity 30
                         }
                       fastHelix Solid{
                          translation 0.06 -0.08 0.07
-                          rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
-                          scale 0.25 0.25 0.25
+                         rotation 0 1 0 1.5708
+                          # rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
+                          scale 0.18 0.18 0.18
                           children[
                           USE FAST_MAIN_HELIX_SHAPE
                         ]
                       }
                       slowHelix Solid{
                         translation 0.06 -0.08 0.07
-                        rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
-                        scale 0.25 0.25 0.25
+                        rotation 1 0 0 1.5708
+                        # rotation 9.393839999974576e-07 2.1285099999942392e-06 -0.9999999999972935 3.14159
+                        scale 0.18 0.18 0.18
                         children[
                           USE SLOW_MAIN_HELIX_TRANSFORM
                         ]
